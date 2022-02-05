@@ -4,5 +4,6 @@
         <page name='DataType'/>
         <page name='Variable'/>
         <page name='Conditional'/>
+        <page name='Property'/>
     </pages>
 </playground>
