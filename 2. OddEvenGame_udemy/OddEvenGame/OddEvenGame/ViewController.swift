@@ -20,6 +20,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var computerBallCountLbl: UILabel!
     @IBOutlet weak var userBallCountLbl: UILabel!
     @IBOutlet weak var resultLbl: UILabel!
+    @IBOutlet weak var imageContainer: UIView!
+    @IBOutlet weak var fistImage: UIImageView!
+    
     
     // 컴퓨터의 구슬, 유저의 구슬 초기화
     var comBallsCount: Int = 20
@@ -32,12 +35,34 @@ class ViewController: UIViewController {
         // 구슬의 텍스트를 직접 지정해줌
         computerBallCountLbl.text = String(comBallsCount)
         userBallCountLbl.text = String(userBallsCount)
+        
+        // 시작할 때는, fist image가 등장하면 안되므로 숨김처리
+        self.imageContainer.isHidden = true
     }
 
     
     // 게임시작 버튼을 눌렀을 때 실행될 것들
     @IBAction func gameStartPressed(_ sender: Any) {
         print("게임시작!!")
+        
+        // 애니메이션이 시작될 수 있도록 이미지를 보이게 함
+        self.imageContainer.isHidden = false
+        // 애니메이션
+        UIView.animate(withDuration: 1.0) {
+            // 다섯배 확대
+            self.fistImage.transform = CGAffineTransform(scaleX: 5, y: 5)
+            // 원래 배율로 돌아옴
+            self.fistImage.transform = CGAffineTransform(scaleX: 1, y: 1)
+            // 애니메이션이 완료됐을 때 아래 실행
+        } completion: { _ in
+            self.imageContainer.isHidden = true
+            // Alert 띄우기
+            self.showAlert()
+        }
+    }
+    
+    // alert을 보여주는 함수
+    func showAlert() {
         // alert 창 생성
         let alert = UIAlertController.init(title: "Game Start!", message: "홀 짝을 선택해주세요.", preferredStyle: .alert)
         // 홀 버튼
@@ -86,9 +111,9 @@ class ViewController: UIViewController {
         self.present(alert, animated: true) {
             print("화면이 띄워졌습니다.")
         }
-        
     }
 
+    // 매 경기마다의 승자 판별하는 함수
     func getWinner(betBallCount: Int, userChoice: String) -> Void {
         let comNumber = getRandom()
         let comType = comNumber % 2 == 0 ? "짝" : "홀"
@@ -102,13 +127,32 @@ class ViewController: UIViewController {
 
     }
     
+    // 주머니가 비었는지 확인하는 함수
+    func checkPocketEmpty(balls: Int) -> Bool {
+        return balls <= 0
+    }
+    
+    // 매 경기마다 구슬 수를 확인하는 함수
     func calculateBalls(winner: String, betBallCount: Int) -> Void {
         if winner == "USER" {
-            self.userBallsCount += betBallCount
-            self.comBallsCount -= betBallCount
+            if checkPocketEmpty(balls: self.comBallsCount - betBallCount) {
+                self.userBallsCount += comBallsCount
+                self.comBallsCount = 0
+                self.resultLbl.text = "유저 최종 승리!"
+            } else {
+                self.comBallsCount -= betBallCount
+                self.userBallsCount += betBallCount
+            }
+            
         } else {
-            self.userBallsCount -= betBallCount
-            self.comBallsCount += betBallCount
+            if checkPocketEmpty(balls: self.userBallsCount - betBallCount) {
+                self.comBallsCount += userBallsCount
+                self.userBallsCount = 0
+                self.resultLbl.text = "컴퓨터 최종 승리!"
+            } else {
+                self.userBallsCount -= betBallCount
+                self.comBallsCount += betBallCount
+            }
         }
         
         self.userBallCountLbl.text = String(self.userBallsCount)
