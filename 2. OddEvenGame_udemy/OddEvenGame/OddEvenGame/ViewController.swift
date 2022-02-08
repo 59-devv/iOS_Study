@@ -20,11 +20,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var computerBallCountLbl: UILabel!
     @IBOutlet weak var userBallCountLbl: UILabel!
     @IBOutlet weak var resultLbl: UILabel!
+    @IBOutlet weak var gameStartBtn: UIButton!
     
     // 컴퓨터의 구슬, 유저의 구슬 초기화
     var comBallsCount: Int = 20
     var userBallsCount: Int = 20
     
+    enum Status {
+        case start
+        case refresh
+    }
+    
+    var status: Status = .start
     
     // 초기 화면이 띄워진 후 실행될 것들
     override func viewDidLoad() {
@@ -36,7 +43,48 @@ class ViewController: UIViewController {
 
     
     // 게임시작 버튼을 눌렀을 때 실행될 것들
-    @IBAction func gameStartPressed(_ sender: Any) {
+    @IBAction func gameStartPressed(_ sender: UIButton) {
+        /*
+        //way1 버튼명을 활용
+        if let text = sender.titleLabel?.text {
+            print(text)
+            if text == "GAME START" {
+                print("game start")
+                self.gameStartPressed()
+            }else{
+                print("refresh")
+                self.refreshGame()
+            }
+        }else{
+            print("no button title")
+        }
+        */
+        
+        //way2 Enum 활용
+    
+        if status == .start {
+            print("game start")
+            self.gameStartPressed()
+        }else if status == .refresh {
+            print("refresh")
+            self.refreshGame()
+        }else{
+            print("no status")
+        }
+        
+    }
+    
+    func refreshGame(){
+        self.comBallsCount = 20
+        self.userBallsCount = 20
+        
+        self.resultLbl.text = "결과화면"
+        self.userBallCountLbl.text = "\(userBallsCount)"
+        self.computerBallCountLbl.text = "\(comBallsCount)"
+    }
+    
+
+    func gameStartPressed(){
         print("게임시작!!")
         // alert 창 생성
         let alert = UIAlertController.init(title: "Game Start!", message: "홀 짝을 선택해주세요.", preferredStyle: .alert)
@@ -85,10 +133,13 @@ class ViewController: UIViewController {
         // self는 프로그램 자체를 의미한다.
         self.present(alert, animated: true) {
             print("화면이 띄워졌습니다.")
+            //way1
+            self.gameStartBtn.setTitle("Refresh", for: .normal)
+            //way2
+            self.status = .refresh
         }
-        
     }
-
+    
     func getWinner(betBallCount: Int, userChoice: String) -> Void {
         let comNumber = getRandom()
         let comType = comNumber % 2 == 0 ? "짝" : "홀"

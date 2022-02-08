@@ -56,7 +56,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lta-gD-HxV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lta-gD-HxV">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5c9-dx-bAH"/>
@@ -87,6 +87,7 @@
                     </view>
                     <connections>
                         <outlet property="computerBallCountLbl" destination="Dz1-c3-xUB" id="1ug-Ov-Ajl"/>
+                        <outlet property="gameStartBtn" destination="Lta-gD-HxV" id="f8t-mf-mPs"/>
                         <outlet property="resultLbl" destination="PgU-UJ-1cG" id="kfd-sc-3An"/>
                         <outlet property="userBallCountLbl" destination="u4a-HI-gTB" id="Mib-c6-69w"/>
                     </connections>
