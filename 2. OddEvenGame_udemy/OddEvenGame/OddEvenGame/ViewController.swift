@@ -22,46 +22,66 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLbl: UILabel!
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var fistImage: UIImageView!
+    @IBOutlet weak var gameStartBtn: UIButton!
     
     
     // 컴퓨터의 구슬, 유저의 구슬 초기화
     var comBallsCount: Int = 20
     var userBallsCount: Int = 20
     
+    // 게임이 진행중인지 끝났는지 판별해주는 enum 생성
+    enum Status {
+        case onGoing
+        case gameOver
+    }
+    
+    // 게임 진행 상황 변수
+    var gameStatus: Status = .onGoing
     
     // 초기 화면이 띄워진 후 실행될 것들
     override func viewDidLoad() {
         super.viewDidLoad()
         // 구슬의 텍스트를 직접 지정해줌
-        computerBallCountLbl.text = String(comBallsCount)
-        userBallCountLbl.text = String(userBallsCount)
+        self.computerBallCountLbl.text = String(comBallsCount)
+        self.userBallCountLbl.text = String(userBallsCount)
         
         // 시작할 때는, fist image가 등장하면 안되므로 숨김처리
         self.imageContainer.isHidden = true
     }
       
     // 게임시작 버튼을 눌렀을 때 실행될 것들
-    @IBAction func gameStartPressed(_ sender: Any) {
+    // sender를 버튼으로 설정해주고, 버튼의 이름을 활용할 예정이다.
+    @IBAction func gameStartPressed(_ sender: UIButton) {
         print("게임시작!!")
+        print(sender.titleLabel?.text ?? "No Title")
         
-        // 애니메이션이 시작될 수 있도록 이미지를 보이게 함
-        self.imageContainer.isHidden = false
-        // 애니메이션
-        UIView.animate(withDuration: 1.0) {
-            // 다섯배 확대
-            self.fistImage.transform = CGAffineTransform(scaleX: 5, y: 5)
-            // 원래 배율로 돌아옴
-            self.fistImage.transform = CGAffineTransform(scaleX: 1, y: 1)
-            // 애니메이션이 완료됐을 때 아래 실행
-        } completion: { _ in
-            self.imageContainer.isHidden = true
-            // Alert 띄우기
-            self.showAlert()
+        // 버튼의 이름이 REFRESH라면, 재시작 함수 실행
+//        if sender.titleLabel?.text == "REFRESH" {
+        // 게임이 종료되었다면, refresh 함수 실행
+        if self.gameStatus == .gameOver {
+            self.refresh()
+        // 버튼의 이름이 GAME START라면,
+        // 애니메이션과 함께 게임 시작 함수 실행
+        } else {
+            // 애니메이션이 시작될 수 있도록 이미지를 보이게 함
+            self.imageContainer.isHidden = false
+            // 애니메이션
+            UIView.animate(withDuration: 1.0) {
+                // 다섯배 확대
+                self.fistImage.transform = CGAffineTransform(scaleX: 5, y: 5)
+                // 원래 배율로 돌아옴
+                self.fistImage.transform = CGAffineTransform(scaleX: 1, y: 1)
+                // 애니메이션이 완료됐을 때 아래 실행
+            } completion: { _ in
+                self.imageContainer.isHidden = true
+                // Alert 띄우기
+                self.gameStart()
+            }
         }
     }
     
-    // alert을 보여주는 함수
-    func showAlert() {
+    // game start alert을 보여주는 함수
+    func gameStart() {
         // alert 생성
         let alert = UIAlertController.init(title: "Game Start!", message: "홀 짝을 선택해주세요.", preferredStyle: .alert)
         // 홀 버튼
@@ -69,9 +89,7 @@ class ViewController: UIViewController {
             print("홀 버튼을 클릭했습니다.")
             
             // 입력창에 입력한 값을 불러온다.
-            // guard를 통해 없을 경우에는 아무것도 하지 않게 한다.
-            // guard 문은 두 개를 동시에 쓸 수도 있다.
-            // value를 Int 타입으로 변형하기 위한 guard 문을 동시에 사용했다.
+            // 해당 값이 nil일 경우, default를 0으로 한다.
             let input: String = alert.textFields?.first?.text ?? "0"
             let value: Int = Int(input) ?? 0
             
@@ -91,14 +109,9 @@ class ViewController: UIViewController {
             print("짝 버튼을 클릭했습니다.")
 
             // 입력창에 입력한 값을 불러온다.
-            // guard를 통해 없을 경우에는 아무것도 하지 않게 한다.
-            guard let input = alert.textFields?.first?.text else {
-                return
-            }
-            
-            guard let value = Int(input) else {
-                return
-            }
+            // 해당 값이 nil일 경우, default를 0으로 한다.
+            let input: String = alert.textFields?.first?.text ?? "0"
+            let value: Int = Int(input) ?? 0
             
             print("입력된 값은 \(input) 입니다.")
             
@@ -124,6 +137,20 @@ class ViewController: UIViewController {
         }
     }
     
+    // 게임 재시작
+    func refresh() {
+        // 공 숫자 및 Lbl 초기화
+        self.comBallsCount = 20
+        self.userBallsCount = 20
+        self.userBallCountLbl.text = String(self.userBallsCount)
+        self.computerBallCountLbl.text = String(self.comBallsCount)
+        self.resultLbl.text = "결과 화면"
+        // 재기작 하였으므로, 버튼이름을 다시 GAME START로 바꾸어줌
+        self.gameStartBtn.setTitle("GAME START", for: .normal)
+        self.gameStatus = .onGoing
+    }
+    
+    
     // 현재 가진 구슬보다 많이 배팅할 수 없고
     // 0개를 배팅할 수 없도록 alert 생성
     func warningAlert(betBallCount: Int, currentBallCount: Int) {
@@ -136,7 +163,7 @@ class ViewController: UIViewController {
         let warningAlert = UIAlertController.init(title: "앗!", message: warningMsg, preferredStyle: .alert)
         
         let confirmBtn = UIAlertAction.init(title: "다시 배팅하기", style: .default) {
-            _ in self.showAlert()
+            _ in self.gameStart()
         }
         
         warningAlert.addAction(confirmBtn)
@@ -153,8 +180,8 @@ class ViewController: UIViewController {
         
         print("\(winner) Win!")
         
-        resultLbl.text = resultMsg
-        calculateBalls(winner: winner, betBallCount: betBallCount)
+        self.resultLbl.text = resultMsg
+        self.calculateBalls(winner: winner, betBallCount: betBallCount)
 
     }
     
@@ -167,9 +194,11 @@ class ViewController: UIViewController {
     func calculateBalls(winner: String, betBallCount: Int) -> Void {
         if winner == "USER" {
             if checkPocketEmpty(balls: self.comBallsCount - betBallCount) {
-                self.userBallsCount = 20
-                self.comBallsCount = 20
+                self.userBallsCount += self.comBallsCount
+                self.comBallsCount = 0
                 self.resultLbl.text = "유저 최종 승리!"
+                self.gameStartBtn.setTitle("REFRESH", for: .normal)
+                self.gameStatus = .gameOver
             } else {
                 self.comBallsCount -= betBallCount
                 self.userBallsCount += betBallCount
@@ -177,9 +206,11 @@ class ViewController: UIViewController {
             
         } else {
             if checkPocketEmpty(balls: self.userBallsCount - betBallCount) {
-                self.comBallsCount = 20
-                self.userBallsCount = 20
+                self.comBallsCount = self.comBallsCount + betBallCount
+                self.userBallsCount = 0
                 self.resultLbl.text = "컴퓨터 최종 승리!"
+                self.gameStartBtn.setTitle("REFRESH", for: .normal)
+                self.gameStatus = .gameOver
             } else {
                 self.userBallsCount -= betBallCount
                 self.comBallsCount += betBallCount
