@@ -14,6 +14,7 @@
 
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     // IBOutlet 객체 선언
@@ -24,6 +25,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var fistImage: UIImageView!
     @IBOutlet weak var gameStartBtn: UIButton!
     
+    
+    // 사운드를 실행할 오디오 플레이어 변수 생성
+    var player: AVAudioPlayer?
     
     // 컴퓨터의 구슬, 유저의 구슬 초기화
     var comBallsCount: Int = 20
@@ -47,16 +51,56 @@ class ViewController: UIViewController {
         
         // 시작할 때는, fist image가 등장하면 안되므로 숨김처리
         self.imageContainer.isHidden = true
+        // 정상적으로 파일 경로를 가져오는지 테스트
+        self.soundPlay(fileName: "intro")
     }
-      
+    
+    // 사운드 재생 함수
+    func soundPlay(fileName: String) {
+        // 파일의 경로를 지정해준다.
+        // Bundle = 실행 가능한 코드와 그 코드가 사용하는 자원을 포함하고 있는 디렉토리
+        // main Bundle = 현재 실행중인 코드가 들어있는 디렉토리
+        // 파일이름과 확장자를 적어주고 경로를 찾는다.
+    
+        // 해당 경로에 파일이 있을지 없을지 모르기 때문에, 예외처리를 해줘야한다.
+        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: "mp3") else {
+            return
+        }
+        print("filePath: \(filePath)")
+        
+        // try? Optional을 통해서 선언해줄 수도 있지만, do-catch 구문을 사용할 수도 있다.
+        // self.player = try? AVAudioPlayer(contentsOf: filePath)
+        do {
+            self.player = try AVAudioPlayer(contentsOf: filePath)
+            // 위에서 설정한 Player가 없을 경우를 대비해서 guard문을 사용해준다.
+            guard let soundPlayer = self.player else {
+                return
+            }
+            
+            // prepareToPlay는 사운드를 재생할 오디오 플레이어를 미리 준비하는 것이다.
+            // 호출 시 버퍼를 미리 로드하고, 재생할 오디어 하드웨어를 호출하므로
+            // 플레이어를 실행시키는 시간과 플레이 하는 시간 사이의 로드를 최소화한다.
+            // 하지만 prepareToPlay 함수를 사용하지 않아도, 암시적으로 자동 실행한다.
+            soundPlayer.prepareToPlay()
+            soundPlayer.setVolume(1, fadeDuration: 0)
+            soundPlayer.play()
+            
+        } catch let error {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
     // 게임시작 버튼을 눌렀을 때 실행될 것들
     // sender를 버튼으로 설정해주고, 버튼의 이름을 활용할 예정이다.
     @IBAction func gameStartPressed(_ sender: UIButton) {
         print("게임시작!!")
         print(sender.titleLabel?.text ?? "No Title")
         
+        // 버튼을 클릭할 때 사운드 재생
+        self.soundPlay(fileName: "gamestart")
+        
         // 버튼의 이름이 REFRESH라면, 재시작 함수 실행
-//        if sender.titleLabel?.text == "REFRESH" {
+        // if sender.titleLabel?.text == "REFRESH" {
         // 게임이 종료되었다면, refresh 함수 실행
         if self.gameStatus == .gameOver {
             self.refresh()
@@ -84,9 +128,11 @@ class ViewController: UIViewController {
     func gameStart() {
         // alert 생성
         let alert = UIAlertController.init(title: "Game Start!", message: "홀 짝을 선택해주세요.", preferredStyle: .alert)
+        
         // 홀 버튼
         let oddBtn = UIAlertAction.init(title: "홀", style: .default) { _ in
-            print("홀 버튼을 클릭했습니다.")
+            // 클릭 시 사운드 재생
+            self.soundPlay(fileName: "click")
             
             // 입력창에 입력한 값을 불러온다.
             // 해당 값이 nil일 경우, default를 0으로 한다.
@@ -101,12 +147,12 @@ class ViewController: UIViewController {
                 self.warningAlert(betBallCount: value,
                                   currentBallCount: self.userBallsCount)
             }
-            
-            
         }
+        
         // 짝 버튼
         let evenBtn = UIAlertAction.init(title: "짝", style: .default) { _ in
-            print("짝 버튼을 클릭했습니다.")
+            // 클릭 시 사운드 재생
+            self.soundPlay(fileName: "click")
 
             // 입력창에 입력한 값을 불러온다.
             // 해당 값이 nil일 경우, default를 0으로 한다.
@@ -149,7 +195,6 @@ class ViewController: UIViewController {
         self.gameStartBtn.setTitle("GAME START", for: .normal)
         self.gameStatus = .onGoing
     }
-    
     
     // 현재 가진 구슬보다 많이 배팅할 수 없고
     // 0개를 배팅할 수 없도록 alert 생성
@@ -221,8 +266,8 @@ class ViewController: UIViewController {
         self.computerBallCountLbl.text = "\(self.comBallsCount)"
     }
     
-    
-        
+    // 컴퓨터가 1~10까지 랜덤 수를 생성하도록 하는 함수
+    // 결국 이 숫자의 홀, 짝을 맞추는 게임이다.
     func getRandom() -> Int {
         /* arc4random_uniform을 통해 랜덤값을 만든다.
            arc4random_uniform은 UInt32 타입이기 때문에, Int로 형변환을 해준다.

@@ -16,6 +16,9 @@
 		EE068AFE27A97A15008B8218 /* OddEvenGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE068AFD27A97A15008B8218 /* OddEvenGameTests.swift */; };
 		EE068B0827A97A15008B8218 /* OddEvenGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE068B0727A97A15008B8218 /* OddEvenGameUITests.swift */; };
 		EE068B0A27A97A15008B8218 /* OddEvenGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE068B0927A97A15008B8218 /* OddEvenGameUITestsLaunchTests.swift */; };
+		EEEF8D4427B4133000A22763 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF8D4127B4133000A22763 /* click.mp3 */; };
+		EEEF8D4527B4133000A22763 /* gamestart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF8D4227B4133000A22763 /* gamestart.mp3 */; };
+		EEEF8D4627B4133000A22763 /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF8D4327B4133000A22763 /* intro.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		EE068B0327A97A15008B8218 /* OddEvenGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OddEvenGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE068B0727A97A15008B8218 /* OddEvenGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddEvenGameUITests.swift; sourceTree = "<group>"; };
 		EE068B0927A97A15008B8218 /* OddEvenGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddEvenGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EEEF8D4127B4133000A22763 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		EEEF8D4227B4133000A22763 /* gamestart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gamestart.mp3; sourceTree = "<group>"; };
+		EEEF8D4327B4133000A22763 /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		EE068ADA27A97A13008B8218 = {
 			isa = PBXGroup;
 			children = (
+				EEEF8D4027B412C600A22763 /* mp3 */,
 				EE068AE527A97A13008B8218 /* OddEvenGame */,
 				EE068AFC27A97A15008B8218 /* OddEvenGameTests */,
 				EE068B0627A97A15008B8218 /* OddEvenGameUITests */,
@@ -125,6 +132,16 @@
 				EE068B0927A97A15008B8218 /* OddEvenGameUITestsLaunchTests.swift */,
 			);
 			path = OddEvenGameUITests;
+			sourceTree = "<group>";
+		};
+		EEEF8D4027B412C600A22763 /* mp3 */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF8D4127B4133000A22763 /* click.mp3 */,
+				EEEF8D4227B4133000A22763 /* gamestart.mp3 */,
+				EEEF8D4327B4133000A22763 /* intro.mp3 */,
+			);
+			path = mp3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +249,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE068AF327A97A14008B8218 /* LaunchScreen.storyboard in Resources */,
+				EEEF8D4427B4133000A22763 /* click.mp3 in Resources */,
 				EE068AF027A97A14008B8218 /* Assets.xcassets in Resources */,
 				EE068AEE27A97A13008B8218 /* Main.storyboard in Resources */,
+				EEEF8D4527B4133000A22763 /* gamestart.mp3 in Resources */,
+				EEEF8D4627B4133000A22763 /* intro.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
