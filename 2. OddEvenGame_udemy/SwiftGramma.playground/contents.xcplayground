@@ -6,5 +6,7 @@
         <page name='Conditional'/>
         <page name='Property'/>
         <page name='ViewControllerLifeCycle'/>
+        <page name='Protocol'/>
+        <page name='DelegatePattern'/>
     </pages>
 </playground>
