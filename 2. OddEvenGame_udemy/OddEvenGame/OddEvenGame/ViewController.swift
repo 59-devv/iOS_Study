@@ -82,7 +82,8 @@ class ViewController: UIViewController {
             // 플레이어를 실행시키는 시간과 플레이 하는 시간 사이의 로드를 최소화한다.
             // 하지만 prepareToPlay 함수를 사용하지 않아도, 암시적으로 자동 실행한다.
             soundPlayer.prepareToPlay()
-            soundPlayer.setVolume(1, fadeDuration: 0)
+            // 사운드가 너무 커서 줄여주었다.
+            soundPlayer.setVolume(0.1, fadeDuration: 0)
             soundPlayer.play()
             
         } catch let error {
