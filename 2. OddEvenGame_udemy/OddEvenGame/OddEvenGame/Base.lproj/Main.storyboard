@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6PO-dE-LGD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="JAT-Yq-xsB">
+            <objects>
+                <navigationController id="6PO-dE-LGD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tlg-Yj-EHJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0nB-m3-4KM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sy3-Po-7nG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-922" y="70"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -33,30 +50,30 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gPw-CQ-g5F">
-                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="724"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comImage" translatesAutoresizingMaskIntoConstraints="NO" id="huX-Ro-VAG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="253.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="238.5"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CFQ-CF-UEc">
-                                        <rect key="frame" x="0.0" y="257.5" width="414" height="253"/>
+                                        <rect key="frame" x="0.0" y="242.5" width="414" height="239"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="남은 구슬 갯수 : 10개" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dz1-c3-xUB">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="81.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결과 화면" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgU-UJ-1cG">
-                                                <rect key="frame" x="0.0" y="85.5" width="414" height="82"/>
+                                                <rect key="frame" x="0.0" y="81" width="414" height="77"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="남은 구슬 갯수 : 10개" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4a-HI-gTB">
-                                                <rect key="frame" x="0.0" y="171.5" width="414" height="81.5"/>
+                                                <rect key="frame" x="0.0" y="162" width="414" height="77"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -65,10 +82,29 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="Zxi-N8-zYI">
-                                        <rect key="frame" x="0.0" y="514.5" width="414" height="253.5"/>
+                                        <rect key="frame" x="0.0" y="485.5" width="414" height="238.5"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BY4-MH-PFf">
+                                <rect key="frame" x="324" y="30" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="DNr-D0-XsI"/>
+                                    <constraint firstAttribute="width" constant="80" id="XKY-Ca-cZX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="설정"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" 설정" buttonSize="medium">
+                                    <imageReference key="image" image="timelapse" catalog="system" symbolScale="default"/>
+                                    <backgroundConfiguration key="background"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="default"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="settingBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lfa-8S-UGy"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0l7-bo-uI2">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
@@ -93,21 +129,30 @@
                             <constraint firstItem="Lta-gD-HxV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9xa-Cd-PxL"/>
                             <constraint firstItem="Lta-gD-HxV" firstAttribute="top" secondItem="gPw-CQ-g5F" secondAttribute="bottom" id="CYc-t9-UiZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Lta-gD-HxV" secondAttribute="bottom" id="HX2-PX-1EW"/>
+                            <constraint firstItem="BY4-MH-PFf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="NyL-ex-dXw"/>
                             <constraint firstItem="gPw-CQ-g5F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Syn-K7-DDO"/>
                             <constraint firstItem="0l7-bo-uI2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="WOw-sH-RnW"/>
                             <constraint firstItem="Lta-gD-HxV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="alp-FB-zT4"/>
                             <constraint firstItem="0l7-bo-uI2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lzd-LR-IIR"/>
                             <constraint firstItem="0l7-bo-uI2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="q5c-dP-OHA"/>
+                            <constraint firstAttribute="trailing" secondItem="BY4-MH-PFf" secondAttribute="trailing" constant="10" id="rfV-LR-tbf"/>
                             <constraint firstItem="gPw-CQ-g5F" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xlQ-8a-P0B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lta-gD-HxV" secondAttribute="trailing" id="zKf-zS-OTN"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="0l7-bo-uI2"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="GEn-dh-F0L"/>
                     <connections>
                         <outlet property="computerBallCountLbl" destination="Dz1-c3-xUB" id="1ug-Ov-Ajl"/>
                         <outlet property="fistImage" destination="yhA-FN-731" id="j9K-fO-FqR"/>
                         <outlet property="gameStartBtn" destination="Lta-gD-HxV" id="J3Q-nc-Nan"/>
                         <outlet property="imageContainer" destination="0l7-bo-uI2" id="9sJ-sf-fpt"/>
                         <outlet property="resultLbl" destination="PgU-UJ-1cG" id="kfd-sc-3An"/>
+                        <outlet property="settingBtn" destination="BY4-MH-PFf" id="N3E-D8-KTL"/>
                         <outlet property="userBallCountLbl" destination="u4a-HI-gTB" id="Mib-c6-69w"/>
                     </connections>
                 </viewController>
@@ -115,10 +160,72 @@
             </objects>
             <point key="canvasLocation" x="44.927536231884062" y="69.642857142857139"/>
         </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="wyk-5T-ujx">
+            <objects>
+                <viewController storyboardIdentifier="SettingViewController" id="47T-uf-09o" customClass="SettingViewController" customModule="OddEvenGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="553-zd-EbP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="gET-aU-EA6">
+                                <rect key="frame" x="88.5" y="397.5" width="237" height="101.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구슬 수를 입력하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1H-Bm-Gg9">
+                                        <rect key="frame" x="0.0" y="0.0" width="237" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NYO-Wr-aYQ">
+                                        <rect key="frame" x="18.5" y="67.5" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="5FZ-f5-XOg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZo-2x-kSG">
+                                <rect key="frame" x="167" y="549" width="80" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Y8v-jG-d4z"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="확인">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="submitBtnPressed:" destination="47T-uf-09o" eventType="touchUpInside" id="fiM-Ax-ZX7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8TK-we-nmH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cZo-2x-kSG" firstAttribute="top" secondItem="gET-aU-EA6" secondAttribute="bottom" constant="50" id="X7m-yP-bTy"/>
+                            <constraint firstItem="gET-aU-EA6" firstAttribute="centerX" secondItem="553-zd-EbP" secondAttribute="centerX" id="c1O-DU-rPo"/>
+                            <constraint firstItem="cZo-2x-kSG" firstAttribute="centerX" secondItem="553-zd-EbP" secondAttribute="centerX" id="gU7-qj-Fcw"/>
+                            <constraint firstItem="gET-aU-EA6" firstAttribute="centerY" secondItem="553-zd-EbP" secondAttribute="centerY" id="mVz-8N-LXb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="countInput" destination="NYO-Wr-aYQ" id="Y07-gs-S1M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GUK-zd-XgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006" y="70"/>
+        </scene>
     </scenes>
     <resources>
         <image name="comImage" width="259" height="271"/>
         <image name="fistImage" width="1280" height="1255"/>
+        <image name="timelapse" catalog="system" width="128" height="122"/>
         <image name="userImage" width="269" height="292"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

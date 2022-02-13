@@ -16,7 +16,8 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SettingDelegate {
+    
     // IBOutlet 객체 선언
     @IBOutlet weak var computerBallCountLbl: UILabel!
     @IBOutlet weak var userBallCountLbl: UILabel!
@@ -24,7 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var fistImage: UIImageView!
     @IBOutlet weak var gameStartBtn: UIButton!
-    
+    @IBOutlet weak var settingBtn: UIButton!
     
     // 사운드를 실행할 오디오 플레이어 변수 생성
     var player: AVAudioPlayer?
@@ -32,6 +33,9 @@ class ViewController: UIViewController {
     // 컴퓨터의 구슬, 유저의 구슬 초기화
     var comBallsCount: Int = 20
     var userBallsCount: Int = 20
+    
+    // 구슬 설정 변경했을 때 저장해놓고, refresh 할 때 이용
+    var settingBallCount: Int = 20
     
     // 게임이 진행중인지 끝났는지 판별해주는 enum 생성
     enum Status {
@@ -97,6 +101,9 @@ class ViewController: UIViewController {
         print("게임시작!!")
         print(sender.titleLabel?.text ?? "No Title")
         
+        // 게임 시작하면 세팅버튼 보이지 않게 하기
+        self.settingBtn.isHidden = true
+        
         // 버튼을 클릭할 때 사운드 재생
         self.soundPlay(fileName: "gamestart")
         
@@ -104,6 +111,8 @@ class ViewController: UIViewController {
         // if sender.titleLabel?.text == "REFRESH" {
         // 게임이 종료되었다면, refresh 함수 실행
         if self.gameStatus == .gameOver {
+            // 게임 끝나면 세팅버튼 다시 나오게 하기
+            
             self.refresh()
         // 버튼의 이름이 GAME START라면,
         // 애니메이션과 함께 게임 시작 함수 실행
@@ -187,8 +196,8 @@ class ViewController: UIViewController {
     // 게임 재시작
     func refresh() {
         // 공 숫자 및 Lbl 초기화
-        self.comBallsCount = 20
-        self.userBallsCount = 20
+        self.comBallsCount = self.settingBallCount
+        self.userBallsCount = self.settingBallCount
         self.userBallCountLbl.text = String(self.userBallsCount)
         self.computerBallCountLbl.text = String(self.comBallsCount)
         self.resultLbl.text = "결과 화면"
@@ -276,5 +285,40 @@ class ViewController: UIViewController {
         */
         return Int(arc4random_uniform(10)) + 1
     }
+    
+    // 설정 버튼을 누르면 다음 화면으로 이동
+    @IBAction func settingBtnPressed(_ sender: UIButton) {
+        // 메인화면 지정해주기
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // 메인화면에서 연결된 이동할 화면
+        let settingViewController = storyboard.instantiateViewController(identifier: "SettingViewController") as SettingViewController
+        
+        // delegate의 호출 주체임을 알려줌
+        settingViewController.delegate = self
+        
+        // 버튼을 눌렀을 경우 화면을 이동시켜줌
+        // navigationController를 사용했으므로 뒤로가기 버튼이 포함됨
+        // self.navigationController?.pushViewController(viewController, animated: true)
+        
+        // 위 방법 말고, 아래 방법으로 모달화면을 띄울 수 있음
+        // 아래 설정을 해주지 않으면, 화면이 가득 차지 않음
+        settingViewController.modalPresentationStyle = .fullScreen
+        self.present(settingViewController, animated: true, completion: nil)
+    }
+    
+    // Delegate 동작 시 변경해줄 것들
+    func setting(ballCount: Int){
+        // 유저, 컴퓨터의 구슬 수 변경
+        self.comBallsCount = ballCount
+        self.userBallsCount = ballCount
+        // 세팅값 저장용 구슬 수 변경
+        self.settingBallCount = ballCount
+        // 화면에 보여지는 구슬 수 변경
+        self.computerBallCountLbl.text = String(comBallsCount)
+        self.userBallCountLbl.text = String(userBallsCount)
+        
+    }
+    
+    
 }
 

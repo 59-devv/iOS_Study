@@ -16,6 +16,7 @@
 		EE068AFE27A97A15008B8218 /* OddEvenGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE068AFD27A97A15008B8218 /* OddEvenGameTests.swift */; };
 		EE068B0827A97A15008B8218 /* OddEvenGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE068B0727A97A15008B8218 /* OddEvenGameUITests.swift */; };
 		EE068B0A27A97A15008B8218 /* OddEvenGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE068B0927A97A15008B8218 /* OddEvenGameUITestsLaunchTests.swift */; };
+		EE49E61227B8F6BA0032F288 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE49E61127B8F6BA0032F288 /* SettingViewController.swift */; };
 		EEEF8D4427B4133000A22763 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF8D4127B4133000A22763 /* click.mp3 */; };
 		EEEF8D4527B4133000A22763 /* gamestart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF8D4227B4133000A22763 /* gamestart.mp3 */; };
 		EEEF8D4627B4133000A22763 /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF8D4327B4133000A22763 /* intro.mp3 */; };
@@ -52,6 +53,7 @@
 		EE068B0327A97A15008B8218 /* OddEvenGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OddEvenGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE068B0727A97A15008B8218 /* OddEvenGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddEvenGameUITests.swift; sourceTree = "<group>"; };
 		EE068B0927A97A15008B8218 /* OddEvenGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddEvenGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EE49E61127B8F6BA0032F288 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EEEF8D4127B4133000A22763 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		EEEF8D4227B4133000A22763 /* gamestart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gamestart.mp3; sourceTree = "<group>"; };
 		EEEF8D4327B4133000A22763 /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				EE068AEF27A97A14008B8218 /* Assets.xcassets */,
 				EE068AF127A97A14008B8218 /* LaunchScreen.storyboard */,
 				EE068AF427A97A14008B8218 /* Info.plist */,
+				EE49E61127B8F6BA0032F288 /* SettingViewController.swift */,
 			);
 			path = OddEvenGame;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				EE068AEB27A97A13008B8218 /* ViewController.swift in Sources */,
 				EE068AE727A97A13008B8218 /* AppDelegate.swift in Sources */,
 				EE068AE927A97A13008B8218 /* SceneDelegate.swift in Sources */,
+				EE49E61227B8F6BA0032F288 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
