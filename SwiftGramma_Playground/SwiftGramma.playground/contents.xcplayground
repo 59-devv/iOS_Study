@@ -9,5 +9,7 @@
         <page name='Protocol'/>
         <page name='DelegatePattern'/>
         <page name='Function_basic'/>
+        <page name='Function_prac'/>
+        <page name='Function_intermediate'/>
     </pages>
 </playground>
