@@ -11,5 +11,6 @@
         <page name='Function_basic'/>
         <page name='Function_prac'/>
         <page name='Function_intermediate'/>
+        <page name='Optional_prac'/>
     </pages>
 </playground>
