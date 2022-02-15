@@ -8,5 +8,6 @@
         <page name='ViewControllerLifeCycle'/>
         <page name='Protocol'/>
         <page name='DelegatePattern'/>
+        <page name='Function_basic'/>
     </pages>
 </playground>
