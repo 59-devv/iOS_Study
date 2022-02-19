@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6ECA6142429A1D037BD906E /* Pods_OddEvenGame_Snapkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A74196630F677BB79AC064 /* Pods_OddEvenGame_Snapkit.framework */; };
 		EEF2C4A827C163A600CC598C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4A727C163A600CC598C /* AppDelegate.swift */; };
-		EEF2C4AA27C163A600CC598C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4A927C163A600CC598C /* SceneDelegate.swift */; };
 		EEF2C4AC27C163A600CC598C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4AB27C163A600CC598C /* ViewController.swift */; };
-		EEF2C4AF27C163A600CC598C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF2C4AD27C163A600CC598C /* Main.storyboard */; };
 		EEF2C4B127C163A700CC598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF2C4B027C163A700CC598C /* Assets.xcassets */; };
 		EEF2C4B427C163A700CC598C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF2C4B227C163A700CC598C /* LaunchScreen.storyboard */; };
 		EEF2C4C027C163DD00CC598C /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEF2C4BD27C163DD00CC598C /* click.mp3 */; };
@@ -19,11 +18,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6224FB8EF323B02EFB3B4AD7 /* Pods-OddEvenGame_Snapkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OddEvenGame_Snapkit.release.xcconfig"; path = "Target Support Files/Pods-OddEvenGame_Snapkit/Pods-OddEvenGame_Snapkit.release.xcconfig"; sourceTree = "<group>"; };
+		B374F105175474E6DB9A534F /* Pods-OddEvenGame_Snapkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OddEvenGame_Snapkit.debug.xcconfig"; path = "Target Support Files/Pods-OddEvenGame_Snapkit/Pods-OddEvenGame_Snapkit.debug.xcconfig"; sourceTree = "<group>"; };
+		E9A74196630F677BB79AC064 /* Pods_OddEvenGame_Snapkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OddEvenGame_Snapkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF2C4A427C163A600CC598C /* OddEvenGame_Snapkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OddEvenGame_Snapkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF2C4A727C163A600CC598C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEF2C4A927C163A600CC598C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EEF2C4AB27C163A600CC598C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EEF2C4AE27C163A600CC598C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEF2C4B027C163A700CC598C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEF2C4B327C163A700CC598C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEF2C4B527C163A700CC598C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6ECA6142429A1D037BD906E /* Pods_OddEvenGame_Snapkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CD42DDFD2C5DE8481F63B15 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B374F105175474E6DB9A534F /* Pods-OddEvenGame_Snapkit.debug.xcconfig */,
+				6224FB8EF323B02EFB3B4AD7 /* Pods-OddEvenGame_Snapkit.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EEF2C49B27C163A600CC598C = {
 			isa = PBXGroup;
 			children = (
 				EEF2C4A627C163A600CC598C /* OddEvenGame_Snapkit */,
 				EEF2C4A527C163A600CC598C /* Products */,
+				5CD42DDFD2C5DE8481F63B15 /* Pods */,
+				F863B1DD3D86D73AD913C535 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,11 +74,12 @@
 		EEF2C4A627C163A600CC598C /* OddEvenGame_Snapkit */ = {
 			isa = PBXGroup;
 			children = (
+				EEF2C4B027C163A700CC598C /* Assets.xcassets */,
+				EEF2C4B227C163A700CC598C /* LaunchScreen.storyboard */,
+				EEF2C4B527C163A700CC598C /* Info.plist */,
 				EEF2C4BB27C163BA00CC598C /* Resources */,
 				EEF2C4A727C163A600CC598C /* AppDelegate.swift */,
-				EEF2C4A927C163A600CC598C /* SceneDelegate.swift */,
 				EEF2C4AB27C163A600CC598C /* ViewController.swift */,
-				EEF2C4AD27C163A600CC598C /* Main.storyboard */,
 			);
 			path = OddEvenGame_Snapkit;
 			sourceTree = "<group>";
@@ -75,9 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				EEF2C4BC27C163DD00CC598C /* mp3 */,
-				EEF2C4B027C163A700CC598C /* Assets.xcassets */,
-				EEF2C4B227C163A700CC598C /* LaunchScreen.storyboard */,
-				EEF2C4B527C163A700CC598C /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -92,6 +102,14 @@
 			path = mp3;
 			sourceTree = "<group>";
 		};
+		F863B1DD3D86D73AD913C535 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9A74196630F677BB79AC064 /* Pods_OddEvenGame_Snapkit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,9 +117,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEF2C4B827C163A700CC598C /* Build configuration list for PBXNativeTarget "OddEvenGame_Snapkit" */;
 			buildPhases = (
+				7321B8F485EAD3349C0EAFC6 /* [CP] Check Pods Manifest.lock */,
 				EEF2C4A027C163A600CC598C /* Sources */,
 				EEF2C4A127C163A600CC598C /* Frameworks */,
 				EEF2C4A227C163A600CC598C /* Resources */,
+				D6655347DE41B78D0D246616 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,13 +173,54 @@
 				EEF2C4B427C163A700CC598C /* LaunchScreen.storyboard in Resources */,
 				EEF2C4C027C163DD00CC598C /* click.mp3 in Resources */,
 				EEF2C4B127C163A700CC598C /* Assets.xcassets in Resources */,
-				EEF2C4AF27C163A600CC598C /* Main.storyboard in Resources */,
 				EEF2C4C127C163DD00CC598C /* intro.mp3 in Resources */,
 				EEF2C4C227C163DD00CC598C /* gamestart.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7321B8F485EAD3349C0EAFC6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OddEvenGame_Snapkit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6655347DE41B78D0D246616 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OddEvenGame_Snapkit/Pods-OddEvenGame_Snapkit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OddEvenGame_Snapkit/Pods-OddEvenGame_Snapkit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OddEvenGame_Snapkit/Pods-OddEvenGame_Snapkit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EEF2C4A027C163A600CC598C /* Sources */ = {
@@ -168,21 +229,12 @@
 			files = (
 				EEF2C4AC27C163A600CC598C /* ViewController.swift in Sources */,
 				EEF2C4A827C163A600CC598C /* AppDelegate.swift in Sources */,
-				EEF2C4AA27C163A600CC598C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EEF2C4AD27C163A600CC598C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EEF2C4AE27C163A600CC598C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EEF2C4B227C163A700CC598C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -312,6 +364,7 @@
 		};
 		EEF2C4B927C163A700CC598C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B374F105175474E6DB9A534F /* Pods-OddEvenGame_Snapkit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,7 +374,6 @@
 				INFOPLIST_FILE = OddEvenGame_Snapkit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -339,6 +391,7 @@
 		};
 		EEF2C4BA27C163A700CC598C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6224FB8EF323B02EFB3B4AD7 /* Pods-OddEvenGame_Snapkit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -348,7 +401,6 @@
 				INFOPLIST_FILE = OddEvenGame_Snapkit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
