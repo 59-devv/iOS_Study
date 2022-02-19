@@ -14,5 +14,7 @@
         <page name='Optional_prac'/>
         <page name='Array'/>
         <page name='Dictionary'/>
+        <page name='Set'/>
+        <page name='Closure'/>
     </pages>
 </playground>
