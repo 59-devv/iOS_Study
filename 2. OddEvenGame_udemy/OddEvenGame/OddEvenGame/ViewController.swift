@@ -112,7 +112,6 @@ class ViewController: UIViewController, SettingDelegate {
         // 게임이 종료되었다면, refresh 함수 실행
         if self.gameStatus == .gameOver {
             // 게임 끝나면 세팅버튼 다시 나오게 하기
-            
             self.refresh()
         // 버튼의 이름이 GAME START라면,
         // 애니메이션과 함께 게임 시작 함수 실행
@@ -254,6 +253,7 @@ class ViewController: UIViewController, SettingDelegate {
                 self.resultLbl.text = "유저 최종 승리!"
                 self.gameStartBtn.setTitle("REFRESH", for: .normal)
                 self.gameStatus = .gameOver
+                self.settingBtn.isHidden = false
             } else {
                 self.comBallsCount -= betBallCount
                 self.userBallsCount += betBallCount
@@ -266,6 +266,7 @@ class ViewController: UIViewController, SettingDelegate {
                 self.resultLbl.text = "컴퓨터 최종 승리!"
                 self.gameStartBtn.setTitle("REFRESH", for: .normal)
                 self.gameStatus = .gameOver
+                self.settingBtn.isHidden = false
             } else {
                 self.userBallsCount -= betBallCount
                 self.comBallsCount += betBallCount
