@@ -319,7 +319,5 @@ class ViewController: UIViewController, SettingDelegate {
         self.userBallCountLbl.text = String(userBallsCount)
         
     }
-    
-    
 }
 
