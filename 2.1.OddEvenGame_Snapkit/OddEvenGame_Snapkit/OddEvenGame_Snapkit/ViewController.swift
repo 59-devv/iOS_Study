@@ -129,6 +129,8 @@ class ViewController: UIViewController {
         settingBtn.semanticContentAttribute = .forceLeftToRight
         settingBtn.configuration = config
         
+        // 세팅 버튼을 눌렀을 때 Action
+        settingBtn.addTarget(self, action: #selector(settingBtnPressed(_:)), for: .touchUpInside)
         return settingBtn
     }()
     
@@ -288,9 +290,7 @@ extension ViewController {
     // sender를 버튼으로 설정해주고, 버튼의 이름을 활용할 예정이다.
     @objc
     func gameStartPressed(_ sender: UIButton) {
-        print("게임시작!!")
-        print(sender.titleLabel?.text ?? "No Title")
-        
+
         // 게임 시작하면 세팅버튼 보이지 않게 하기
         self.settingBtn.isHidden = true
         
@@ -338,8 +338,6 @@ extension ViewController {
             let input: String = alert.textFields?.first?.text ?? "0"
             let value: Int = Int(input) ?? 0
             
-            print("입력된 값은 \(input) 입니다.")
-            
             if value != 0 && self.userBallsCount >= value {
                 self.getWinner(betBallCount: value, userChoice: "홀")
             } else {
@@ -358,8 +356,6 @@ extension ViewController {
             let input: String = alert.textFields?.first?.text ?? "0"
             let value: Int = Int(input) ?? 0
             
-            print("입력된 값은 \(input) 입니다.")
-            
             if value != 0 && self.userBallsCount >= value {
                 self.getWinner(betBallCount: value, userChoice: "짝")
             } else {
@@ -377,9 +373,7 @@ extension ViewController {
         
         // alert 창을 실제로 화면에 띄운다.
         // self는 프로그램 자체를 의미한다.
-        self.present(alert, animated: true) {
-            print("화면이 띄워졌습니다.")
-        }
+        self.present(alert, animated: true)
     }
     
     // 게임 재시작
@@ -475,5 +469,30 @@ extension ViewController {
            10을 넣으면 0~9까지를 랜덤으로 주기 때문에 +1 을 해준다.
         */
         return Int(arc4random_uniform(10)) + 1
+    }
+}
+
+// MARK: 세팅버튼
+extension ViewController: SettingDelegate {
+    
+    @objc
+    func settingBtnPressed(_ sender: UIButton) {
+        let settingView = SettingViewController()
+        settingView.delegate = self
+        settingView.modalPresentationStyle = .popover
+        self.present(settingView, animated: true, completion: nil)
+    }
+    
+    // Delegate 동작 시 변경해줄 것들
+    func setting(ballCount: Int){
+        // 유저, 컴퓨터의 구슬 수 변경
+        self.comBallsCount = ballCount
+        self.userBallsCount = ballCount
+        // 세팅값 저장용 구슬 수 변경
+        self.settingBallCount = ballCount
+        // 화면에 보여지는 구슬 수 변경
+        self.computerBallCountLbl.text = String(comBallsCount)
+        self.userBallCountLbl.text = String(userBallsCount)
+        
     }
 }

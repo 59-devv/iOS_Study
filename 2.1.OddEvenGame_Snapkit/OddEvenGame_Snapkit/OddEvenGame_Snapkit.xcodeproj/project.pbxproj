@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D6ECA6142429A1D037BD906E /* Pods_OddEvenGame_Snapkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A74196630F677BB79AC064 /* Pods_OddEvenGame_Snapkit.framework */; };
+		EE006C1727C3DD06003E72D9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE006C1627C3DD06003E72D9 /* SettingViewController.swift */; };
 		EEF2C4A827C163A600CC598C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4A727C163A600CC598C /* AppDelegate.swift */; };
 		EEF2C4AC27C163A600CC598C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4AB27C163A600CC598C /* ViewController.swift */; };
 		EEF2C4B127C163A700CC598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF2C4B027C163A700CC598C /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 		6224FB8EF323B02EFB3B4AD7 /* Pods-OddEvenGame_Snapkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OddEvenGame_Snapkit.release.xcconfig"; path = "Target Support Files/Pods-OddEvenGame_Snapkit/Pods-OddEvenGame_Snapkit.release.xcconfig"; sourceTree = "<group>"; };
 		B374F105175474E6DB9A534F /* Pods-OddEvenGame_Snapkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OddEvenGame_Snapkit.debug.xcconfig"; path = "Target Support Files/Pods-OddEvenGame_Snapkit/Pods-OddEvenGame_Snapkit.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A74196630F677BB79AC064 /* Pods_OddEvenGame_Snapkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OddEvenGame_Snapkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE006C1627C3DD06003E72D9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EEF2C4A427C163A600CC598C /* OddEvenGame_Snapkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OddEvenGame_Snapkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF2C4A727C163A600CC598C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEF2C4AB27C163A600CC598C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				EEF2C4BB27C163BA00CC598C /* Resources */,
 				EEF2C4A727C163A600CC598C /* AppDelegate.swift */,
 				EEF2C4AB27C163A600CC598C /* ViewController.swift */,
+				EE006C1627C3DD06003E72D9 /* SettingViewController.swift */,
 			);
 			path = OddEvenGame_Snapkit;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			files = (
 				EEF2C4AC27C163A600CC598C /* ViewController.swift in Sources */,
 				EEF2C4A827C163A600CC598C /* AppDelegate.swift in Sources */,
+				EE006C1727C3DD06003E72D9 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
