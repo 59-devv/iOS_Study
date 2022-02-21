@@ -110,12 +110,25 @@ class ViewController: UIViewController {
 
     // 세팅 버튼
     private var settingBtn = { () -> UIButton in
-        let settingBtn = UIButton(type: .custom)
+        let settingBtn = UIButton(type: .system)
         let btnImg = UIImage(systemName: "command")
-        settingBtn.setBackgroundImage(btnImg, for: .normal)
-        settingBtn.tintColor = .black
-        settingBtn.contentMode = .scaleAspectFill
-        settingBtn.setTitle("설정", for: .normal)
+        
+        // 이미지 버튼 설정
+        var config = UIButton.Configuration.filled()
+        config.title = "설정"
+        config.image = UIImage(systemName: "command")
+        config.baseBackgroundColor = .white
+        config.baseForegroundColor = .black
+        config.background.strokeWidth = 0.5
+        config.background.strokeColor = .black
+        config.imagePadding = 3
+        config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 10)
+        config.buttonSize = .mini
+        
+        // 이미지를 좌측, 글자를 우측으로 고정
+        settingBtn.semanticContentAttribute = .forceLeftToRight
+        settingBtn.configuration = config
+        
         return settingBtn
     }()
     
@@ -223,9 +236,9 @@ extension ViewController {
         
         // settingBtn에 제약 추가
         settingBtn.snp.makeConstraints( { btn in
-            btn.width.height.equalTo(25)
-            btn.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-20)
-            btn.top.equalToSuperview().offset(60)
+            btn.height.greaterThanOrEqualTo(5)
+            btn.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
+            btn.top.equalToSuperview().offset(50)
         })
     }
 }
@@ -240,7 +253,7 @@ extension ViewController {
         // 파일이름과 확장자를 적어주고 경로를 찾는다.
     
         // 해당 경로에 파일이 있을지 없을지 모르기 때문에, 예외처리를 해줘야한다.
-        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: "mp3", subdirectory: "mp3") else {
+        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: "mp3") else {
             return
         }
         print("filePath: \(filePath)")
