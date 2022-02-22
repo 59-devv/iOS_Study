@@ -16,5 +16,10 @@
         <page name='Dictionary'/>
         <page name='Set'/>
         <page name='Closure'/>
+        <page name='Structure+Class'/>
+        <page name='Structure_prac1'/>
+        <page name='Structure_prac2'/>
+        <page name='Structure_prac3'/>
+        <page name='Structure_prac4'/>
     </pages>
 </playground>
