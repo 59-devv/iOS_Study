@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D6ECA6142429A1D037BD906E /* Pods_OddEvenGame_Snapkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A74196630F677BB79AC064 /* Pods_OddEvenGame_Snapkit.framework */; };
 		EE006C1727C3DD06003E72D9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE006C1627C3DD06003E72D9 /* SettingViewController.swift */; };
+		EEAC538F27C50DDF006DA5B7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EEAC538E27C50DDF006DA5B7 /* FirebaseAnalytics */; };
 		EEF2C4A827C163A600CC598C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4A727C163A600CC598C /* AppDelegate.swift */; };
 		EEF2C4AC27C163A600CC598C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4AB27C163A600CC598C /* ViewController.swift */; };
 		EEF2C4B127C163A700CC598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF2C4B027C163A700CC598C /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEAC538F27C50DDF006DA5B7 /* FirebaseAnalytics in Frameworks */,
 				D6ECA6142429A1D037BD906E /* Pods_OddEvenGame_Snapkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +133,9 @@
 			dependencies = (
 			);
 			name = OddEvenGame_Snapkit;
+			packageProductDependencies = (
+				EEAC538E27C50DDF006DA5B7 /* FirebaseAnalytics */,
+			);
 			productName = OddEvenGame_Snapkit;
 			productReference = EEF2C4A427C163A600CC598C /* OddEvenGame_Snapkit.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +164,9 @@
 				Base,
 			);
 			mainGroup = EEF2C49B27C163A600CC598C;
+			packageReferences = (
+				EEAC538D27C50DDF006DA5B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = EEF2C4A527C163A600CC598C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -372,8 +380,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 588KK9ZA28;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OddEvenGame_Snapkit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -387,6 +397,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.59.OddEvenGame-Snapkit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -399,8 +410,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 588KK9ZA28;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OddEvenGame_Snapkit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -414,6 +427,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.59.OddEvenGame-Snapkit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -442,6 +456,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EEAC538D27C50DDF006DA5B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EEAC538E27C50DDF006DA5B7 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEAC538D27C50DDF006DA5B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EEF2C49C27C163A600CC598C /* Project object */;
 }

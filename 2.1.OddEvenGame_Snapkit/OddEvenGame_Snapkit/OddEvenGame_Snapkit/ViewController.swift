@@ -240,7 +240,7 @@ extension ViewController {
         settingBtn.snp.makeConstraints( { btn in
             btn.height.greaterThanOrEqualTo(5)
             btn.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
-            btn.top.equalToSuperview().offset(50)
+            btn.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(20)
         })
     }
 }
@@ -477,9 +477,10 @@ extension ViewController: SettingDelegate {
     
     @objc
     func settingBtnPressed(_ sender: UIButton) {
+        print("눌러졌음")
         let settingView = SettingViewController()
         settingView.delegate = self
-        settingView.modalPresentationStyle = .popover
+        settingView.modalPresentationStyle = .currentContext
         self.present(settingView, animated: true, completion: nil)
     }
     
@@ -493,6 +494,5 @@ extension ViewController: SettingDelegate {
         // 화면에 보여지는 구슬 수 변경
         self.computerBallCountLbl.text = String(comBallsCount)
         self.userBallCountLbl.text = String(userBallsCount)
-        
     }
 }

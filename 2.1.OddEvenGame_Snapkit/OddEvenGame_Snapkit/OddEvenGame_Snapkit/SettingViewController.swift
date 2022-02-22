@@ -32,8 +32,6 @@ class SettingViewController: UIViewController {
         let input = UITextField()
         // input 영역 테두리 설정
         input.borderStyle = .line
-        // 설정창이 열리면 input 영역에 자동으로 첫번째 포커스가 맞춰지도록 설정하기
-        input.becomeFirstResponder()
         return input
     }()
     
@@ -63,8 +61,8 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         constraint()
-
-        // Do any additional setup after loading the view.
+        // 키보드가 올라가면서, 화면이 같이 올라가도록 한다.
+        keyboardOpenCloseEvent()
     }
 }
 
@@ -126,5 +124,51 @@ extension SettingViewController {
         countInput.snp.makeConstraints { input in
             input.width.equalTo(200)
         }
+    }
+
+}
+
+// MARK: - 키보드관련 설정
+extension SettingViewController {
+    @objc
+    func keyboardWillShow(_ sender: Notification) {
+        
+        // 키보드 창이 올라올 때, 확인버튼의 위치를 계산해서
+        // 키보드에 가려지지 않도록 화면을 위로 올려준다.
+        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            let btnMaxY = submitBtn.frame.maxY
+            let btnMinY = submitBtn.frame.minY
+            let btnHeight = btnMaxY - btnMinY
+            let frameY = view.frame.maxY
+            let emptySpace = frameY - btnMaxY
+            if emptySpace < keyboardHeight {
+                self.view.frame.origin.y -= keyboardHeight - emptySpace + btnHeight
+            } else {
+                self.view.frame.origin.y -= btnHeight
+            }
+        }
+    }
+    
+    @objc
+    func keyboardWillHide(_ sender: Notification) {
+        self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
+    // 키보드 열고 닫힐 때를 감지하여 메서드 실행
+    func keyboardOpenCloseEvent() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // 여백을 터치할 경우, 키보드가 아래로 내려가도록 설정
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
+    
+    // 내일 추가로 공부해볼 것
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        countInput.resignFirstResponder()
+        return true
     }
 }
