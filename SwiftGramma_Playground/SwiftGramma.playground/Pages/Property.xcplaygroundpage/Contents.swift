@@ -71,7 +71,7 @@ struct SomeStruct {
     static var storedTypeProperty: String = "Some Value"
     static var computedTypeProperty: Int {
         return 1
-    }ㅌ3
+    }
 }
 
 SomeStruct.computedTypeProperty

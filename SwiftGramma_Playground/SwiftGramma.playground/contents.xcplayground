@@ -21,5 +21,7 @@
         <page name='Structure_prac2'/>
         <page name='Structure_prac3'/>
         <page name='Structure_prac4'/>
+        <page name='Property2'/>
+        <page name='Property+Method'/>
     </pages>
 </playground>
