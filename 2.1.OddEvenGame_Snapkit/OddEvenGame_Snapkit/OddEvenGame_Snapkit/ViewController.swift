@@ -327,7 +327,6 @@ extension ViewController {
     func gameStart() {
         // alert 생성
         let alert = UIAlertController.init(title: "Game Start!", message: "홀 짝을 선택해주세요.", preferredStyle: .alert)
-        
         // 홀 버튼
         let oddBtn = UIAlertAction.init(title: "홀", style: .default) { _ in
             // 클릭 시 사운드 재생
@@ -368,7 +367,11 @@ extension ViewController {
         alert.addAction(oddBtn)
         alert.addAction(evenBtn)
         alert.addTextField { textField in
+            textField.resignFirstResponder()
             textField.placeholder = "배팅할 구슬의 수"
+            textField.textAlignment = .center
+            textField.keyboardType = UIKeyboardType.numberPad
+            textField.returnKeyType = .done
         }
         
         // alert 창을 실제로 화면에 띄운다.
@@ -472,7 +475,7 @@ extension ViewController {
     }
 }
 
-// MARK: 세팅버튼
+// MARK: 세팅
 extension ViewController: SettingDelegate {
     
     @objc
@@ -494,5 +497,10 @@ extension ViewController: SettingDelegate {
         // 화면에 보여지는 구슬 수 변경
         self.computerBallCountLbl.text = String(comBallsCount)
         self.userBallCountLbl.text = String(userBallsCount)
+    }
+    
+    // 여백을 터치할 경우, 키보드가 아래로 내려가도록 설정
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
 }

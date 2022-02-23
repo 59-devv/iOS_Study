@@ -32,6 +32,15 @@ class SettingViewController: UIViewController {
         let input = UITextField()
         // input 영역 테두리 설정
         input.borderStyle = .line
+        let string = "초기 구슬 수를 입력해주세요."
+        let placeHolderText = NSAttributedString(string: string, attributes: [
+            .foregroundColor: UIColor.lightGray,
+            .font: UIFont.systemFont(ofSize: 14)
+        ])
+        input.resignFirstResponder()
+        input.attributedPlaceholder = placeHolderText
+        input.textAlignment = .center
+        input.keyboardType = UIKeyboardType.numberPad
         return input
     }()
     
@@ -61,6 +70,7 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         constraint()
+        
         // 키보드가 올라가면서, 화면이 같이 올라가도록 한다.
         keyboardOpenCloseEvent()
     }
@@ -152,7 +162,8 @@ extension SettingViewController {
     
     @objc
     func keyboardWillHide(_ sender: Notification) {
-        self.view.frame.origin.y = 0 // Move view to original position
+        // 키보드 창이 내려갈 때, 화면을 원래 위치로 돌려준다.
+        self.view.frame.origin.y = 0
     }
     
     // 키보드 열고 닫힐 때를 감지하여 메서드 실행
@@ -165,10 +176,11 @@ extension SettingViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
           self.view.endEditing(true)
     }
-    
-    // 내일 추가로 공부해볼 것
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        countInput.resignFirstResponder()
-        return true
-    }
+
+//
+//    // 내일 추가로 공부해볼 것
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        countInput.resignFirstResponder()
+//        return true
+//    }
 }
