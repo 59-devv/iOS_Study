@@ -26,5 +26,6 @@
         <page name='Method'/>
         <page name='Class'/>
         <page name='Inheritance'/>
+        <page name='Initializer'/>
     </pages>
 </playground>
