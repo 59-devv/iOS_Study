@@ -24,5 +24,7 @@
         <page name='Property2'/>
         <page name='Property+Method'/>
         <page name='Method'/>
+        <page name='Class'/>
+        <page name='Inheritance'/>
     </pages>
 </playground>
