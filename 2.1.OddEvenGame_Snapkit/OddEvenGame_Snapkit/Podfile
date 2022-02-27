@@ -7,4 +7,5 @@ target 'OddEvenGame_Snapkit' do
 
   # Pods for OddEvenGame_Snapkit
   pod 'SnapKit'
+  pod 'Then'
 end

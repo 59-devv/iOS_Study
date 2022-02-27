@@ -8,109 +8,228 @@
 import AVFoundation
 import UIKit
 import SnapKit
+import Then
 
 class ViewController: UIViewController {
     
-    // MARK: Make Components
+    // MARK: - Make Components
+    // MARK: -- before Then Library
     // 상위 Stack View 생성 (컴퓨터 이미지, 하위 Stack View, 유저 이미지)
-    private var mainStackView = { () -> UIStackView in
-        let mainStackView = UIStackView()
-        mainStackView.axis = .vertical
-        mainStackView.alignment = .fill
-        mainStackView.distribution = .fillEqually
-        mainStackView.spacing = 4
-        return mainStackView
-    }()
+//    private var mainStackView = { () -> UIStackView in
+//        let mainStackView = UIStackView()
+//        mainStackView.axis = .vertical
+//        mainStackView.alignment = .fill
+//        mainStackView.distribution = .fillEqually
+//        mainStackView.spacing = 4
+//        return mainStackView
+//    }()
     
     // 하위 Stack View 생성 (결과화면, 컴퓨터 구슬 수, 유저 구슬 수)
-    private var labelStackView = { () -> UIStackView in
-        let labelStackView = UIStackView()
-        labelStackView.axis = .vertical
-        labelStackView.alignment = .fill
-        labelStackView.distribution = .fillEqually
-        labelStackView.spacing = 4
-        return labelStackView
-    }()
+//    private var labelStackView = { () -> UIStackView in
+//        let labelStackView = UIStackView()
+//        labelStackView.axis = .vertical
+//        labelStackView.alignment = .fill
+//        labelStackView.distribution = .fillEqually
+//        labelStackView.spacing = 4
+//        return labelStackView
+//    }()
     
     // 컴퓨터가 가진 구슬 수 라벨
-    private var computerBallCountLbl = { () -> UILabel in
-        let computerBallCountLbl = UILabel()
-        computerBallCountLbl.text = "남은 구슬 갯수 : 10개"
-        computerBallCountLbl.textAlignment = .center
-        computerBallCountLbl.font = UIFont.systemFont(ofSize: 17)
-        return computerBallCountLbl
-    }()
+//    private var computerBallCountLbl = { () -> UILabel in
+//        let computerBallCountLbl = UILabel()
+//        computerBallCountLbl.text = "남은 구슬 갯수 : 10개"
+//        computerBallCountLbl.textAlignment = .center
+//        computerBallCountLbl.font = UIFont.systemFont(ofSize: 17)
+//        return computerBallCountLbl
+//    }()
     
     // 유저가 가진 구슬 수 라벨
-    private var userBallCountLbl = { () -> UILabel in
-        let userBallCountLbl = UILabel()
-        userBallCountLbl.text = "남은 구슬 갯수 : 10개"
-        userBallCountLbl.textAlignment = .center
-        userBallCountLbl.font = UIFont.systemFont(ofSize: 17)
-        return userBallCountLbl
-    }()
+//    private var userBallCountLbl = { () -> UILabel in
+//        let userBallCountLbl = UILabel()
+//        userBallCountLbl.text = "남은 구슬 갯수 : 10개"
+//        userBallCountLbl.textAlignment = .center
+//        userBallCountLbl.font = UIFont.systemFont(ofSize: 17)
+//        return userBallCountLbl
+//    }()
+    
+//    // 결과 텍스트 라벨
+//    private var resultLbl = { () -> UILabel in
+//        let resultLbl = UILabel()
+//        resultLbl.text = "결과 화면"
+//        resultLbl.textColor = .black
+//        resultLbl.textAlignment = .center
+//        resultLbl.font = UIFont.systemFont(ofSize: 30)
+//        return resultLbl
+//    }()
+//
+//    // 컴퓨터 이미지
+//    private var comImage = { () -> UIImageView in
+//        let comImage = UIImageView()
+//        comImage.image = UIImage(named: "comImage")
+//        comImage.contentMode = .scaleAspectFit
+//        return comImage
+//    }()
+//
+//    // 유저 이미지
+//    private var userImage = { () -> UIImageView in
+//        let userImage = UIImageView()
+//        userImage.image = UIImage(named: "userImage")
+//        userImage.contentMode = .scaleAspectFit
+//        return userImage
+//    }()
+//
+//    // 이미지컨테이너
+//    private var imageContainer = { () -> UIView in
+//        let imageContainer = UIView()
+//        imageContainer.backgroundColor = .white
+//        return imageContainer
+//    }()
+//
+//    // 주먹 쥔 손 이미지
+//    private var fistImage = { () -> UIImageView in
+//        let fistImage = UIImageView()
+//        fistImage.image = UIImage(named: "fistImage")
+//        fistImage.contentMode = .scaleAspectFit
+//        return fistImage
+//    }()
+    
+//    // 게임시작 버튼
+//    private var gameStartBtn = { () -> UIButton in
+//        let gameStartBtn = UIButton(type: .system)
+//
+//        // NSAttributedString을 통해, Label Text를 원하는대로 만들기
+//        let btnString = "GAME START"
+//        let font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+//        let attributes = [NSAttributedString.Key.font: font]
+//        let attributedString = NSAttributedString(string: btnString, attributes: attributes)
+//        gameStartBtn.setAttributedTitle(attributedString, for: .normal)
+//        gameStartBtn.setTitleColor(.white, for: .normal)
+//        gameStartBtn.backgroundColor = .systemYellow
+//        // 게임시작 버튼 눌렀을때 Action
+//        gameStartBtn.addTarget(self, action: #selector(gameStartPressed(_:)), for: .touchUpInside)
+//        return gameStartBtn
+//    }()
+//
+//    // 세팅 버튼
+//    private var settingBtn = { () -> UIButton in
+//        let settingBtn = UIButton(type: .system)
+//        let btnImg = UIImage(systemName: "command")
+//
+//        // 이미지 버튼 설정
+//        var config = UIButton.Configuration.filled()
+//        config.title = "설정"
+//        config.image = UIImage(systemName: "command")
+//        config.baseBackgroundColor = .white
+//        config.baseForegroundColor = .black
+//        config.background.strokeWidth = 0.5
+//        config.background.strokeColor = .black
+//        config.imagePadding = 3
+//        config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 10)
+//        config.buttonSize = .mini
+//
+//        // 이미지를 좌측, 글자를 우측으로 고정
+//        settingBtn.semanticContentAttribute = .forceLeftToRight
+//        settingBtn.configuration = config
+//
+//        // 세팅 버튼을 눌렀을 때 Action
+//        settingBtn.addTarget(self, action: #selector(settingBtnPressed(_:)), for: .touchUpInside)
+//        return settingBtn
+//    }()
+    
+    // MARK: -- after Then Library
+    private var mainStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.alignment = .fill
+        $0.distribution = .fillEqually
+        $0.spacing = 4
+    }
+    
+    private var labelStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.alignment = .fill
+        $0.distribution = .fillEqually
+        $0.spacing = 4
+    }
+    
+    private var computerBallCountLbl = UILabel().then {
+        $0.text = "남은 구슬 갯수 : 10개"
+        $0.textAlignment = .center
+        $0.font = UIFont.systemFont(ofSize: 17)
+    }
+    
+    private var userBallCountLbl = UILabel().then {
+        $0.text = "남은 구슬 갯수 : 10개"
+        $0.textAlignment = .center
+        $0.font = UIFont.systemFont(ofSize: 17)
+    }
     
     // 결과 텍스트 라벨
-    private var resultLbl = { () -> UILabel in
-        let resultLbl = UILabel()
-        resultLbl.text = "결과 화면"
-        resultLbl.textColor = .black
-        resultLbl.textAlignment = .center
-        resultLbl.font = UIFont.systemFont(ofSize: 30)
-        return resultLbl
-    }()
+    private var resultLbl = UILabel().then {
+        $0.text = "결과 화면"
+        $0.textColor = .black
+        $0.textAlignment = .center
+        $0.font = UIFont.systemFont(ofSize: 30)
+    }
     
     // 컴퓨터 이미지
-    private var comImage = { () -> UIImageView in
-        let comImage = UIImageView()
-        comImage.image = UIImage(named: "comImage")
-        comImage.contentMode = .scaleAspectFit
-        return comImage
-    }()
+    private var comImage = UIImageView().then {
+        $0.image = UIImage(named: "comImage")
+        $0.contentMode = .scaleAspectFit
+    }
     
     // 유저 이미지
-    private var userImage = { () -> UIImageView in
-        let userImage = UIImageView()
-        userImage.image = UIImage(named: "userImage")
-        userImage.contentMode = .scaleAspectFit
-        return userImage
-    }()
+    private var userImage = UIImageView().then {
+        $0.image = UIImage(named: "userImage")
+        $0.contentMode = .scaleAspectFit
+    }
     
     // 이미지컨테이너
-    private var imageContainer = { () -> UIView in
-        let imageContainer = UIView()
-        imageContainer.backgroundColor = .white
-        return imageContainer
-    }()
+    private var imageContainer = UIView().then {
+        $0.backgroundColor = .white
+    }
     
     // 주먹 쥔 손 이미지
-    private var fistImage = { () -> UIImageView in
-        let fistImage = UIImageView()
-        fistImage.image = UIImage(named: "fistImage")
-        fistImage.contentMode = .scaleAspectFit
-        return fistImage
-    }()
+    private var fistImage = UIImageView().then {
+        $0.image = UIImage(named: "fistImage")
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    // 게임시작 버튼의, GAME START 텍스트
+    private static var gameStartBtnText: NSAttributedString {
+        let btnString = "GAME START"
+        let font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        let attributes = [NSAttributedString.Key.font: font]
+        let attributedString = NSAttributedString(string: btnString, attributes: attributes)
+        
+        return attributedString
+    }
+    
+    // 게임시작 버튼의, REFRESH 텍스트
+    private static var refreshBtnText: NSAttributedString {
+        let btnString = "REFRESH"
+        let font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        let attributes = [NSAttributedString.Key.font: font]
+        let attributedString = NSAttributedString(string: btnString, attributes: attributes)
+        
+        return attributedString
+    }
     
     // 게임시작 버튼
-    private var gameStartBtn = { () -> UIButton in
-        let gameStartBtn = UIButton(type: .system)
-        
+    private var gameStartBtn = UIButton(type: .system).then {
         // NSAttributedString을 통해, Label Text를 원하는대로 만들기
         let btnString = "GAME START"
         let font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         let attributes = [NSAttributedString.Key.font: font]
         let attributedString = NSAttributedString(string: btnString, attributes: attributes)
-        gameStartBtn.setAttributedTitle(attributedString, for: .normal)
-        gameStartBtn.setTitleColor(.white, for: .normal)
-        gameStartBtn.backgroundColor = .systemYellow
+        $0.setAttributedTitle(gameStartBtnText, for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .systemYellow
         // 게임시작 버튼 눌렀을때 Action
-        gameStartBtn.addTarget(self, action: #selector(gameStartPressed(_:)), for: .touchUpInside)
-        return gameStartBtn
-    }()
+        $0.addTarget(self, action: #selector(gameStartPressed(_:)), for: .touchUpInside)
+    }
 
     // 세팅 버튼
-    private var settingBtn = { () -> UIButton in
-        let settingBtn = UIButton(type: .system)
+    private var settingBtn = UIButton(type: .system).then {
         let btnImg = UIImage(systemName: "command")
         
         // 이미지 버튼 설정
@@ -126,14 +245,13 @@ class ViewController: UIViewController {
         config.buttonSize = .mini
         
         // 이미지를 좌측, 글자를 우측으로 고정
-        settingBtn.semanticContentAttribute = .forceLeftToRight
-        settingBtn.configuration = config
+        $0.semanticContentAttribute = .forceLeftToRight
+        $0.configuration = config
         
         // 세팅 버튼을 눌렀을 때 Action
-        settingBtn.addTarget(self, action: #selector(settingBtnPressed(_:)), for: .touchUpInside)
-        return settingBtn
-    }()
-    
+        $0.addTarget(self, action: #selector(settingBtnPressed(_:)), for: .touchUpInside)
+    }
+
     
     // MARK: Sound
     // 사운드를 실행할 오디오 플레이어 변수 생성
@@ -295,7 +413,10 @@ extension ViewController {
         self.settingBtn.isHidden = true
         
         // 버튼을 클릭할 때 사운드 재생
-        self.soundPlay(fileName: "gamestart")
+        // 단, Refresh 버튼을 눌렀을때는 재생하지 않음
+        if gameStatus == .onGoing {
+            self.soundPlay(fileName: "gamestart")
+        }
         
         // 버튼의 이름이 REFRESH라면, 재시작 함수 실행
         // if sender.titleLabel?.text == "REFRESH" {
@@ -387,8 +508,8 @@ extension ViewController {
         self.userBallCountLbl.text = String(self.userBallsCount)
         self.computerBallCountLbl.text = String(self.comBallsCount)
         self.resultLbl.text = "결과 화면"
-        // 재기작 하였으므로, 버튼이름을 다시 GAME START로 바꾸어줌
-        self.gameStartBtn.setTitle("GAME START", for: .normal)
+        // 재시작 하였으므로, 버튼이름을 다시 GAME START로 바꾸어줌
+        self.gameStartBtn.setAttributedTitle(ViewController.gameStartBtnText, for: .normal)
         self.gameStatus = .onGoing
     }
     
@@ -438,7 +559,7 @@ extension ViewController {
                 self.userBallsCount += self.comBallsCount
                 self.comBallsCount = 0
                 self.resultLbl.text = "유저 최종 승리!"
-                self.gameStartBtn.setTitle("REFRESH", for: .normal)
+                self.gameStartBtn.setAttributedTitle(ViewController.refreshBtnText, for: .normal)
                 self.gameStatus = .gameOver
                 self.settingBtn.isHidden = false
             } else {
@@ -451,7 +572,7 @@ extension ViewController {
                 self.comBallsCount = self.comBallsCount + betBallCount
                 self.userBallsCount = 0
                 self.resultLbl.text = "컴퓨터 최종 승리!"
-                self.gameStartBtn.setTitle("REFRESH", for: .normal)
+                self.gameStartBtn.setAttributedTitle(ViewController.refreshBtnText, for: .normal)
                 self.gameStatus = .gameOver
                 self.settingBtn.isHidden = false
             } else {

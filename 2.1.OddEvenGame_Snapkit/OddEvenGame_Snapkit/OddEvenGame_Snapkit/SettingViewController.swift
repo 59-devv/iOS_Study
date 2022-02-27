@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Then
 
 protocol SettingDelegate {
     func setting(ballCount: Int)
@@ -14,57 +15,99 @@ protocol SettingDelegate {
 
 class SettingViewController: UIViewController {
 
-    // MARK: Make Components
-    
     // delegate 생성
     var delegate: SettingDelegate?
     
+    // MARK: - Make Components
+    // MARK: -- before Then Library
+//    // 텍스트 라벨
+//    private var textLabel = { () -> UILabel in
+//        let textLabel = UILabel()
+//        textLabel.text = "구슬 수를 입력하세요."
+//        textLabel.font = .systemFont(ofSize: 25.0, weight: .medium)
+//        return textLabel
+//    }()
+//
+//    // Input
+//    private var countInput = { ()-> UITextField in
+//        let input = UITextField()
+//        // input 영역 테두리 설정
+//        input.borderStyle = .line
+//        let string = "초기 구슬 수를 입력해주세요."
+//        let placeHolderText = NSAttributedString(string: string, attributes: [
+//            .foregroundColor: UIColor.lightGray,
+//            .font: UIFont.systemFont(ofSize: 14)
+//        ])
+//        input.resignFirstResponder()
+//        input.attributedPlaceholder = placeHolderText
+//        input.textAlignment = .center
+//        input.keyboardType = UIKeyboardType.numberPad
+//        return input
+//    }()
+//
+//    // Submit Button
+//    private var submitBtn = { () -> UIButton in
+//        let button = UIButton(type: .system)
+//        button.setTitle("확인", for: .normal)
+//        button.setTitleColor(.white, for: .normal)
+//        button.backgroundColor = .lightGray
+//
+//        // 버튼 눌렀을 때 동작 설정
+//        button.addTarget(self, action: #selector(submitBtnPressed(_:)), for: .touchUpInside)
+//        return button
+//    }()
+//
+//    // Stack
+//    private var stackView = { () -> UIStackView in
+//        let labelStackView = UIStackView()
+//        labelStackView.axis = .vertical
+//        labelStackView.alignment = .center
+//        labelStackView.distribution = .fill
+//        labelStackView.spacing = 34
+//        return labelStackView
+//    }()
+//
+    
+    // MARK: -- after Then Library
     // 텍스트 라벨
-    private var textLabel = { () -> UILabel in
-        let textLabel = UILabel()
-        textLabel.text = "구슬 수를 입력하세요."
-        textLabel.font = .systemFont(ofSize: 25.0, weight: .medium)
-        return textLabel
-    }()
+    private var textLabel = UILabel().then {
+        $0.text = "구슬 수를 입력하세요."
+        $0.font = .systemFont(ofSize: 25.0, weight: .medium)
+    }
     
     // Input
-    private var countInput = { ()-> UITextField in
-        let input = UITextField()
+    private var countInput = UITextField().then {
         // input 영역 테두리 설정
-        input.borderStyle = .line
+        $0.borderStyle = .line
         let string = "초기 구슬 수를 입력해주세요."
         let placeHolderText = NSAttributedString(string: string, attributes: [
             .foregroundColor: UIColor.lightGray,
             .font: UIFont.systemFont(ofSize: 14)
         ])
-        input.resignFirstResponder()
-        input.attributedPlaceholder = placeHolderText
-        input.textAlignment = .center
-        input.keyboardType = UIKeyboardType.numberPad
-        return input
-    }()
+        
+        $0.resignFirstResponder()
+        $0.attributedPlaceholder = placeHolderText
+        $0.textAlignment = .center
+        $0.keyboardType = UIKeyboardType.numberPad
+    }
     
     // Submit Button
-    private var submitBtn = { () -> UIButton in
-        let button = UIButton(type: .system)
-        button.setTitle("확인", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .lightGray
+    private var submitBtn = UIButton().then {
+        $0.setTitle("확인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .lightGray
         
         // 버튼 눌렀을 때 동작 설정
-        button.addTarget(self, action: #selector(submitBtnPressed(_:)), for: .touchUpInside)
-        return button
-    }()
+        $0.addTarget(self, action: #selector(submitBtnPressed(_:)), for: .touchUpInside)
+    }
     
     // Stack
-    private var stackView = { () -> UIStackView in
-        let labelStackView = UIStackView()
-        labelStackView.axis = .vertical
-        labelStackView.alignment = .center
-        labelStackView.distribution = .fill
-        labelStackView.spacing = 34
-        return labelStackView
-    }()
+    private var stackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 34
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
