@@ -10,21 +10,22 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        // UIWindow 객체를 생성한다.
-        window = UIWindow(frame: UIScreen.main.bounds)
-        // View Controller와, 그 앞에 있는 Navigation Controller를 만들어준다.
-        let mainVC = ViewController()
-        let navigationController = UINavigationController(rootViewController: mainVC)
-        // 윈도우 위에, 실제로 보여질 View를 ViewController로 설정해준다.
-        window?.rootViewController = navigationController
-        // 만든 윈도우를 'Key'로 만들고, 보여지도록 설정한다.
-        window?.makeKeyAndVisible()
-
+        // Override point for customization after application launch.
         return true
+    }
+
+    // MARK: UISceneSession Lifecycle
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 }
 

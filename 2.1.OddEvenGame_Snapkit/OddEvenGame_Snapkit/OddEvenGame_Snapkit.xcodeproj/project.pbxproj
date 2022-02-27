@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		D6ECA6142429A1D037BD906E /* Pods_OddEvenGame_Snapkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A74196630F677BB79AC064 /* Pods_OddEvenGame_Snapkit.framework */; };
 		EE006C1727C3DD06003E72D9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE006C1627C3DD06003E72D9 /* SettingViewController.swift */; };
+		EE0D754627CBCAFF00F3A408 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D754527CBCAFF00F3A408 /* GameView.swift */; };
+		EE0D754827CBCB2200F3A408 /* FistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D754727CBCB2200F3A408 /* FistView.swift */; };
+		EE0D754A27CBCB2F00F3A408 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D754927CBCB2F00F3A408 /* SettingView.swift */; };
+		EE0D754E27CBCB5000F3A408 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D754D27CBCB5000F3A408 /* GameModel.swift */; };
+		EE0D755027CBCF4700F3A408 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D754F27CBCF4700F3A408 /* GameViewModel.swift */; };
+		EE0D755327CBDA6C00F3A408 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D755227CBDA6C00F3A408 /* GameViewController.swift */; };
+		EE0D755527CBF70E00F3A408 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D755427CBF70E00F3A408 /* SetViewController.swift */; };
+		EE0D755727CBFC3B00F3A408 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D755627CBFC3B00F3A408 /* SceneDelegate.swift */; };
+		EE0D755927CC0C1F00F3A408 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D755827CC0C1F00F3A408 /* SettingViewModel.swift */; };
+		EE0D755B27CC0C2E00F3A408 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0D755A27CC0C2E00F3A408 /* SettingModel.swift */; };
 		EEAC538F27C50DDF006DA5B7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EEAC538E27C50DDF006DA5B7 /* FirebaseAnalytics */; };
 		EEF2C4A827C163A600CC598C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4A727C163A600CC598C /* AppDelegate.swift */; };
 		EEF2C4AC27C163A600CC598C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2C4AB27C163A600CC598C /* ViewController.swift */; };
@@ -24,6 +34,16 @@
 		B374F105175474E6DB9A534F /* Pods-OddEvenGame_Snapkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OddEvenGame_Snapkit.debug.xcconfig"; path = "Target Support Files/Pods-OddEvenGame_Snapkit/Pods-OddEvenGame_Snapkit.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A74196630F677BB79AC064 /* Pods_OddEvenGame_Snapkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OddEvenGame_Snapkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE006C1627C3DD06003E72D9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		EE0D754527CBCAFF00F3A408 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		EE0D754727CBCB2200F3A408 /* FistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FistView.swift; sourceTree = "<group>"; };
+		EE0D754927CBCB2F00F3A408 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		EE0D754D27CBCB5000F3A408 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		EE0D754F27CBCF4700F3A408 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		EE0D755227CBDA6C00F3A408 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		EE0D755427CBF70E00F3A408 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
+		EE0D755627CBFC3B00F3A408 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EE0D755827CC0C1F00F3A408 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		EE0D755A27CC0C2E00F3A408 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		EEF2C4A427C163A600CC598C /* OddEvenGame_Snapkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OddEvenGame_Snapkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF2C4A727C163A600CC598C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEF2C4AB27C163A600CC598C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +77,43 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EE0D754427CBCAE900F3A408 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE0D754527CBCAFF00F3A408 /* GameView.swift */,
+				EE0D754727CBCB2200F3A408 /* FistView.swift */,
+				EE0D754927CBCB2F00F3A408 /* SettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EE0D754B27CBCB3300F3A408 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE0D754D27CBCB5000F3A408 /* GameModel.swift */,
+				EE0D755A27CC0C2E00F3A408 /* SettingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EE0D754C27CBCB3800F3A408 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EE0D754F27CBCF4700F3A408 /* GameViewModel.swift */,
+				EE0D755827CC0C1F00F3A408 /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EE0D755127CBDA5500F3A408 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE0D755227CBDA6C00F3A408 /* GameViewController.swift */,
+				EE0D755427CBF70E00F3A408 /* SetViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		EEF2C49B27C163A600CC598C = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +135,10 @@
 		EEF2C4A627C163A600CC598C /* OddEvenGame_Snapkit */ = {
 			isa = PBXGroup;
 			children = (
+				EE0D755127CBDA5500F3A408 /* ViewController */,
+				EE0D754C27CBCB3800F3A408 /* ViewModel */,
+				EE0D754B27CBCB3300F3A408 /* Model */,
+				EE0D754427CBCAE900F3A408 /* View */,
 				EEF2C4B027C163A700CC598C /* Assets.xcassets */,
 				EEF2C4B227C163A700CC598C /* LaunchScreen.storyboard */,
 				EEF2C4B527C163A700CC598C /* Info.plist */,
@@ -85,6 +146,7 @@
 				EEF2C4A727C163A600CC598C /* AppDelegate.swift */,
 				EEF2C4AB27C163A600CC598C /* ViewController.swift */,
 				EE006C1627C3DD06003E72D9 /* SettingViewController.swift */,
+				EE0D755627CBFC3B00F3A408 /* SceneDelegate.swift */,
 			);
 			path = OddEvenGame_Snapkit;
 			sourceTree = "<group>";
@@ -239,8 +301,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF2C4AC27C163A600CC598C /* ViewController.swift in Sources */,
+				EE0D755527CBF70E00F3A408 /* SetViewController.swift in Sources */,
 				EEF2C4A827C163A600CC598C /* AppDelegate.swift in Sources */,
+				EE0D754627CBCAFF00F3A408 /* GameView.swift in Sources */,
+				EE0D754A27CBCB2F00F3A408 /* SettingView.swift in Sources */,
+				EE0D755327CBDA6C00F3A408 /* GameViewController.swift in Sources */,
+				EE0D755027CBCF4700F3A408 /* GameViewModel.swift in Sources */,
+				EE0D755B27CC0C2E00F3A408 /* SettingModel.swift in Sources */,
+				EE0D755927CC0C1F00F3A408 /* SettingViewModel.swift in Sources */,
+				EE0D755727CBFC3B00F3A408 /* SceneDelegate.swift in Sources */,
 				EE006C1727C3DD06003E72D9 /* SettingViewController.swift in Sources */,
+				EE0D754E27CBCB5000F3A408 /* GameModel.swift in Sources */,
+				EE0D754827CBCB2200F3A408 /* FistView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
