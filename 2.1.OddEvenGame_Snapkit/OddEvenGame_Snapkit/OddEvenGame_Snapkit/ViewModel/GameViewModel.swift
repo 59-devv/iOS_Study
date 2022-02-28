@@ -79,8 +79,8 @@ extension GameViewModel {
         self.userBallsCount = defaultBalls
         self.comBallsCount = defaultBalls
         return GameResult(
-            userCountText: "\(self.userBallsCount)",
-            comCountText: "\(self.comBallsCount)",
+            userCountText: "남은 구슬 갯수 : \(self.userBallsCount)개",
+            comCountText: "남은 구슬 갯수 : \(self.comBallsCount)개",
             resultMessage: "결과 화면",
             winner: nil,
             gameStatus: self.gameStatus)
@@ -98,8 +98,8 @@ extension GameViewModel {
         
         let statusResult = self.calculateBalls(winner: winner, betBallCount: betBallCount)
         
-        return GameResult(userCountText: "\(self.userBallsCount)",
-                          comCountText: "\(self.comBallsCount)",
+        return GameResult(userCountText: "남은 구슬 갯수 : \(self.userBallsCount)개",
+                          comCountText: "남은 구슬 갯수 : \(self.comBallsCount)개",
                           resultMessage: "\(comType.toString())! \(winner.toString()) win!",
                           winner: winner,
                           gameStatus: statusResult)

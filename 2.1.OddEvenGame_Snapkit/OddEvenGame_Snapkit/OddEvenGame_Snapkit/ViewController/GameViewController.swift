@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     var settingView = SettingView()
     //메모리 관리(leak 방지,  강한순환참조 방지) 목적으로 옵셔널 사용
     var gameViewModel: GameViewModel? = GameViewModel(defaultBalls: 20)
+    var settingViewModel: SettingViewModel? = SettingViewModel()
     
     // 게임시작 버튼
     var gameStartBtn = UIButton(type: .system).then {
@@ -107,22 +108,22 @@ extension GameViewController {
 
 // MARK: - 세팅화면 관련
 extension GameViewController: SetDelegate {
-
-    func setting(ballCount: Int) {
-        guard let gameViewModel = self.gameViewModel else { return }
-        gameViewModel.userBallsCount = ballCount
-        gameViewModel.comBallsCount = ballCount
-        gameViewModel.settingBallCount = ballCount
-        
-        updateScreenByResult(result: ballCountUpdateAfterSetting(ballCount: ballCount))
-    }
     
     @objc
     func settingBtnPressed(_ sender: UIButton) {
         let settingView = SetViewController()
-        settingView.delegate = self
+        settingView.settingDelegate = self
         settingView.modalPresentationStyle = .currentContext
         self.present(settingView, animated: true, completion: nil)
+    }
+    
+    func setting (ballCount: Int) {
+        guard let gameModel = self.gameViewModel else { return }
+        gameModel.userBallsCount = ballCount
+        gameModel.comBallsCount = ballCount
+        gameModel.settingBallCount = ballCount
+        
+        updateScreenByResult(result: ballCountUpdateAfterSetting(ballCount: ballCount))
     }
 }
 
@@ -153,8 +154,8 @@ extension GameViewController {
     
     // 세팅 후, 구슬 수 Label Text 바꾸기
     func ballCountUpdateAfterSetting (ballCount: Int) -> GameResult {
-        return GameResult (userCountText: "\(ballCount)",
-                           comCountText: "\(ballCount)",
+        return GameResult (userCountText: "남은 구슬 갯수 : \(ballCount)개",
+                           comCountText: "남은 구슬 갯수 : \(ballCount)개",
                            resultMessage: "결과 화면",
                            winner: nil,
                            gameStatus: .onGoing)
@@ -172,8 +173,8 @@ extension GameViewController {
         viewModel.userBallsCount = viewModel.settingBallCount
         viewModel.comBallsCount = viewModel.settingBallCount
         // LABEL 초기화
-        let gameResult = GameResult(userCountText: "\(viewModel.settingBallCount)",
-                                    comCountText: "\(viewModel.settingBallCount)",
+        let gameResult = GameResult(userCountText: "남은 구슬 갯수 : \(viewModel.settingBallCount)개",
+                                    comCountText: "남은 구슬 갯수 : \(viewModel.settingBallCount)개",
                                     resultMessage: "결과 화면",
                                     winner: nil,
                                     gameStatus: .onGoing)
@@ -193,8 +194,6 @@ extension GameViewController {
         }
     }
 }
-
-
 
 // MARK: - Alert창 관련
 extension GameViewController {
@@ -273,39 +272,33 @@ extension GameViewController {
         self.view.addSubview(self.gameView)
         self.view.addSubview(self.fistView)
         self.view.addSubview(self.settingBtn)
-        
-        
     }
     
     // 제약 세팅
     func setCustomUI() {
-        gameStartBtn.snp.makeConstraints( { button in
-            button.leading.trailing.bottom.equalTo(self.view.safeAreaLayoutGuide)
-            button.height.equalTo(50)
-        } )
+        // 게임버튼 제약 추가
+        gameStartBtn.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            $0.height.equalTo(50)
+        }
         
         // MainStackView에 제약 추가
-        gameView.mainStackView.snp.makeConstraints( {stackView in
-            stackView.bottom.equalTo(gameStartBtn.snp.top)
-            stackView.leading.trailing.top.equalTo(self.view.safeAreaLayoutGuide)
-        } )
+        gameView.mainStackView.snp.makeConstraints {
+            $0.bottom.equalTo(gameStartBtn.snp.top)
+            $0.leading.trailing.top.equalTo(self.view.safeAreaLayoutGuide)
+        }
         
-//        // LabelStackView에 제약 추가
-//        gameView.labelStackView.snp.makeConstraints( {stackView in
-//            stackView.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-//            stackView.centerX.equalTo(self.view.safeAreaLayoutGuide.snp.centerX)
-//        } )
-        
-        fistView.snp.makeConstraints { view in
-            view.leading.trailing.top.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        // FistView에 제약 추가
+        fistView.snp.makeConstraints {
+            $0.leading.trailing.top.bottom.equalTo(self.view.safeAreaLayoutGuide)
             
         }
         
         // settingBtn에 제약 추가
-        settingBtn.snp.makeConstraints( { btn in
-            btn.height.greaterThanOrEqualTo(5)
-            btn.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
-            btn.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(20)
-        })
+        settingBtn.snp.makeConstraints {
+            $0.height.greaterThanOrEqualTo(5)
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(20)
+        }
     }
 }

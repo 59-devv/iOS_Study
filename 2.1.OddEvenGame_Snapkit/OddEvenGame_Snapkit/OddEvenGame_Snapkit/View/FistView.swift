@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class FistView: UIView {
     
@@ -38,12 +40,12 @@ class FistView: UIView {
     
     // Animation 이후의 Event를 CallBack으로 받을 수 있다.
     func animationEvent(completion: @escaping () -> ()){
-        self.isHidden = false
+        self.chageHiddenState()
         UIView.animate(withDuration: 1.0) {
             self.fistImage.transform = CGAffineTransform(scaleX: 5, y: 5)
             self.fistImage.transform = CGAffineTransform(scaleX: 1, y: 1)
         } completion: { _ in
-            self.isHidden = true
+            self.chageHiddenState()
             completion()
         }
     }

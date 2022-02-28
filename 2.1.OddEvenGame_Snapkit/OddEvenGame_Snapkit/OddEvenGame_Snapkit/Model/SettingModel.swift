@@ -7,6 +7,6 @@
 
 import UIKit
 
-class SettingModel: NSObject {
-
+struct SettingModel {
+    var ballCountText: String
 }
