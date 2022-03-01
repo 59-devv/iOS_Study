@@ -9,6 +9,10 @@ import UIKit
 import Then
 import SnapKit
 
+protocol SubmitButtonDelegate {
+    func buttonPressed(defaultBalls: String?)
+}
+
 class SettingView: UIView {
 
     // MARK: -- after Then Library
@@ -42,6 +46,17 @@ class SettingView: UIView {
         $0.spacing = 34
     }
     
+    var submitBtn = UIButton().then {
+        $0.setTitle("확인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .lightGray
+        
+        // 버튼 눌렀을 때 동작 설정
+        $0.addTarget(self, action: #selector(submitBtnPressed(_:)), for: .touchUpInside)
+    }
+    
+    var delegate: SubmitButtonDelegate?
+    var buttonPressed: ((_ defaultBalls: String?) -> ())?
     // 생성자를 통해서 뷰 위치 지정
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +73,7 @@ class SettingView: UIView {
         self.addSubview(stackView)
         stackView.addArrangedSubview(textLabel)
         stackView.addArrangedSubview(countInput)
+        self.addSubview(submitBtn)
         
         countInput.snp.makeConstraints {
             $0.width.equalTo(200)
@@ -66,6 +82,32 @@ class SettingView: UIView {
         stackView.snp.makeConstraints {
             $0.leading.trailing.centerY.equalToSuperview()
         }
+        
+        submitBtn.snp.makeConstraints { btn in
+            btn.width.equalTo(80)
+            btn.centerX.equalTo(self.snp.centerX)
+            btn.top.equalTo(self.stackView.snp.bottom).offset(50)
+        }
 
     }
+}
+
+extension SettingView {
+    // MARK: - way1. Closure 활용
+    @objc
+    func submitBtnPressed(_ sender: UIButton) {
+        self.buttonPressed?(self.countInput.text)
+    }
+    
+    /*
+     MARK: - way2. Delegate Pattern
+    @objc
+    func submitBtnPressed(_ sender: UIButton) {
+        guard let count = self.countInput.text, let countInt = Int(count) else {
+             self.delegate?.buttonPressed(defaultBalls: 0)
+            return
+        }
+        self.delegate?.buttonPressed(defaultBalls: countInt)
+    }
+     */
 }

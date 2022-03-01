@@ -9,6 +9,12 @@ import UIKit
 import SnapKit
 import Then
 
+extension String {
+    func toAttributeString() -> NSAttributedString{
+        return NSAttributedString(string: self)
+    }
+}
+
 class GameViewController: UIViewController {
     
     var gameView = GameView()
@@ -20,7 +26,10 @@ class GameViewController: UIViewController {
     
     // 게임시작 버튼
     var gameStartBtn = UIButton(type: .system).then {
-        let btnText: NSAttributedString = startBtnText(text: StartBtnText.gameStart.toString())
+        //way 1 초기값 설정
+//       let btnText: NSAttributedString = NSAttributedString(string: "GAME START")
+        //way2 extension 활용.
+        let btnText: NSAttributedString = "GAME Start".toAttributeString()
         // NSAttributedString을 통해, Label Text를 원하는대로 만들기
         $0.setAttributedTitle(btnText, for: .normal)
         $0.setTitleColor(.white, for: .normal)
@@ -130,7 +139,7 @@ extension GameViewController: SetDelegate {
 // MARK: - 화면이 바뀌는 메서드
 extension GameViewController {
     // 게임버튼의 텍스트 바꾸기
-    static func startBtnText(text: String) -> NSAttributedString {
+    func startBtnText(text: String) -> NSAttributedString {
         let btnString = text
         let font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         let attributes = [NSAttributedString.Key.font: font]
@@ -143,7 +152,7 @@ extension GameViewController {
     func updateScreenByResult(result: GameResult) {
         gameView.updateResultText(gameResult: result)
         if result.gameStatus == .gameOver {
-            let btnText: NSAttributedString = GameViewController.startBtnText(text: StartBtnText.refresh.toString())
+            let btnText: NSAttributedString = startBtnText(text: StartBtnText.refresh.toString())
             self.gameStartBtn.setAttributedTitle(btnText,
                                                  for: .normal)
             // 세팅버튼 보이게 하기
@@ -164,7 +173,7 @@ extension GameViewController {
     // 게임 종료 후, Refresh 버튼을 누르면 Label 초기화 하기
     func initLabels() {
         // REFRESH -> GAMESTART
-        let btnText: NSAttributedString = GameViewController.startBtnText(text: StartBtnText.gameStart.toString())
+        let btnText: NSAttributedString = startBtnText(text: StartBtnText.gameStart.toString())
         self.gameStartBtn.setAttributedTitle(btnText,
                                              for: .normal)
         

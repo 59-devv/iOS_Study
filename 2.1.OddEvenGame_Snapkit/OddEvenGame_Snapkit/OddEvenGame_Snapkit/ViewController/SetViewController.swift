@@ -15,15 +15,7 @@ class SetViewController: UIViewController {
     var settingDelegate: SetDelegate?
     //메모리 관리(leak 방지,  강한순환참조 방지) 목적으로 옵셔널 사용
     var settingViewModel: SettingViewModel? = SettingViewModel()
-    
-    var submitBtn = UIButton().then {
-        $0.setTitle("확인", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = .lightGray
-        
-        // 버튼 눌렀을 때 동작 설정
-        $0.addTarget(self, action: #selector(submitBtnPressed(_:)), for: .touchUpInside)
-    }
+    var isKeyboardShown = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +24,27 @@ class SetViewController: UIViewController {
         setCustomUI()
 
         keyboardOpenCloseEvent()
+        
+        self.settingView.delegate =  self
+        
+        //MARK: - 클로저를 사용해서 버튼 클릭시 기능 구현
+        self.settingView.buttonPressed = { [weak self] defaultBalls in
+            
+            guard let self = self else { return }
+            guard let vm = self.settingViewModel else { return }
+            if vm.isBiggerThanZero(ballsStr: vm.stringToInt(text: defaultBalls)) {
+                self.settingDelegate?.setting(ballCount: vm.stringToInt(text: defaultBalls))
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                self.warningAlert()
+            }
+            
+        }
     }
 }
 
 // MARK: - 세팅완료 버튼
 extension SetViewController {
-    @objc
-    func submitBtnPressed(_ sender: UIButton) {
-        // countInput을 입력하지 않았을 때, 혹은 숫자가 아닐 때 경고창
-        guard let count = self.settingView.countInput.text, let countInt = Int(count) else {
-            warningAlert()
-            return
-        }
-        // countInput이 정상적으로 입력되었을 때, delegate 메서드 실행
-        self.settingDelegate?.setting(ballCount: countInt)
-        // 모달창이 열리는 것이므로, 확인 버튼을 누른 후 자동으로 닫히도록 설정
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     // 입력하지 않을 시 Alert 창
     func warningAlert() {
         let warningMsg = "초기 구슬 갯수를 입력해주세요."
@@ -68,12 +63,15 @@ extension SetViewController {
     @objc
     func keyboardWillShow(_ sender: Notification) {
         
+        //키보드가 올라온 상황에서는 return 시킨다.
+        if self.isKeyboardShown { return }
         // 키보드 창이 올라올 때, 확인버튼의 위치를 계산해서
         // 키보드에 가려지지 않도록 화면을 위로 올려준다.
+        self.isKeyboardShown = !self.isKeyboardShown
         if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardHeight = keyboardFrame.cgRectValue.height
-            let btnMaxY = submitBtn.frame.maxY
-            let btnMinY = submitBtn.frame.minY
+            let btnMaxY = self.settingView.submitBtn.frame.maxY
+            let btnMinY = self.settingView.submitBtn.frame.minY
             let btnHeight = btnMaxY - btnMinY
             let frameY = view.frame.maxY
             let emptySpace = frameY - btnMaxY
@@ -82,13 +80,16 @@ extension SetViewController {
             } else {
                 self.view.frame.origin.y -= btnHeight
             }
+
         }
+
     }
     
     @objc
     func keyboardWillHide(_ sender: Notification) {
         // 키보드 창이 내려갈 때, 화면을 원래 위치로 돌려준다.
         self.view.frame.origin.y = 0
+        self.isKeyboardShown = false
     }
     
     // 키보드 열고 닫힐 때를 감지하여 메서드 실행
@@ -110,7 +111,6 @@ extension SetViewController {
     func setupLayout() {
         self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.view.addSubview(settingView)
-        self.view.addSubview(submitBtn)
     }
     
     // 제약 세팅
@@ -118,15 +118,27 @@ extension SetViewController {
         settingView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+}
+
+
+extension SetViewController: SubmitButtonDelegate {
+    func buttonPressed(defaultBalls: String?) {
         
-        submitBtn.snp.makeConstraints { btn in
-            btn.width.equalTo(80)
-            btn.centerX.equalTo(settingView.snp.centerX)
-            btn.top.equalTo(settingView.stackView.snp.bottom).offset(50)
+        guard let vm = self.settingViewModel else { return }
+        
+        if vm.isBiggerThanZero(ballsStr: vm.stringToInt(text: defaultBalls)) {
+            // countInput이 정상적으로 입력되었을 때, delegate 메서드 실행
+            self.settingDelegate?.setting(ballCount: vm.stringToInt(text: defaultBalls))
+            // 모달창이 열리는 것이므로, 확인 버튼을 누른 후 자동으로 닫히도록 설정
+            self.dismiss(animated: true, completion: nil)
+            
+        }else{
+            warningAlert()
         }
     }
 }
-
 
 // MARK: - SwiftUI 미리보기 만들기
 enum DeviceType {
