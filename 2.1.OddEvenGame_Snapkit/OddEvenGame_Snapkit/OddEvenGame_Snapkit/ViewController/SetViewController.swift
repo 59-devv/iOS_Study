@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import Then
 
+protocol SetDelegate {
+    func setting(ballCount: Int)
+}
+
 class SetViewController: UIViewController {
     
     var settingView = SettingView()
@@ -16,7 +20,7 @@ class SetViewController: UIViewController {
     //메모리 관리(leak 방지,  강한순환참조 방지) 목적으로 옵셔널 사용
     var settingViewModel: SettingViewModel? = SettingViewModel()
     var isKeyboardShown = false
-    
+    var settingDelegate: SetDelegate?
 //    var submitBtn = UIButton().then {
 //        $0.setTitle("확인", for: .normal)
 //        $0.setTitleColor(.white, for: .normal)
@@ -35,7 +39,6 @@ class SetViewController: UIViewController {
         keyboardOpenCloseEvent()
         
         self.settingView.delegate = self
-    
     }
 }
 
@@ -141,7 +144,7 @@ extension SetViewController: SubmitButtonDelegate {
         guard let vm = self.settingViewModel else { return }
         if vm.isBiggerThanZero(ballsStr: vm.stringToInt(text: defaultBalls)) {
             // countInput이 정상적으로 입력되었을 때, delegate 실행
-            vm.delegate?.setting(ballCount: vm.stringToInt(text: defaultBalls))
+            self.settingDelegate?.setting(ballCount: vm.stringToInt(text: defaultBalls))
             print("2. after button Pressed, \(defaultBalls!)")
             
             // 확인 버튼을 누른 후 자동으로 닫히도록 설정

@@ -7,11 +7,6 @@
 
 import UIKit
 
-
-protocol SetDelegate {
-    func setting(ballCount: Int)
-}
-
 class SettingViewModel {
 
     var delegate: SetDelegate?

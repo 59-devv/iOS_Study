@@ -107,7 +107,7 @@ extension SettingView {
             self.delegate?.buttonPressed(defaultBalls: "0")
             return
         }
-        print("1. submitbtnPressed function works well")
         self.delegate?.buttonPressed(defaultBalls: count)
+        print("1. submitbtnPressed function works well")
     }
 }

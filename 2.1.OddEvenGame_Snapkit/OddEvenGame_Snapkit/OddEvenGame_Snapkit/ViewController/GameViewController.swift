@@ -135,6 +135,7 @@ extension GameViewController: SetDelegate {
     @objc
     func settingBtnPressed(_ sender: UIButton) {
         let settingView = SetViewController()
+        settingView.settingDelegate = self
         settingView.modalPresentationStyle = .currentContext
         self.present(settingView, animated: true, completion: nil)
     }
