@@ -11,6 +11,16 @@ struct GameResult {
     var userCountText: String
     var comCountText: String
     var resultMessage: String
+    var defaultBall: Int = 20
     var winner: Player?
     var gameStatus: GameStatus
+    
+    var defaultBallCount: Int {
+        get {
+            return self.defaultBall
+        }
+        set {
+            self.defaultBall = newValue
+        }
+    }
 }

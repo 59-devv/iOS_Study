@@ -9,6 +9,10 @@ import UIKit
 import Then
 import SnapKit
 
+protocol SubmitButtonDelegate {
+    func buttonPressed(defaultBalls: String?)
+}
+
 class SettingView: UIView {
 
     // MARK: -- after Then Library
@@ -42,6 +46,18 @@ class SettingView: UIView {
         $0.spacing = 34
     }
     
+    var submitBtn = UIButton(type: .system).then {
+        $0.setTitle("확인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .lightGray
+
+        // 버튼 눌렀을 때 동작 설정
+        $0.addTarget(self, action: #selector(submitBtnPressed(_:)), for: .touchUpInside)
+    }
+    
+    var delegate: SubmitButtonDelegate?
+    var buttonPressed: ((_ defaultBalls: String?) -> ())?
+    
     // 생성자를 통해서 뷰 위치 지정
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +74,7 @@ class SettingView: UIView {
         self.addSubview(stackView)
         stackView.addArrangedSubview(textLabel)
         stackView.addArrangedSubview(countInput)
+        self.addSubview(submitBtn)
         
         countInput.snp.makeConstraints {
             $0.width.equalTo(200)
@@ -67,5 +84,30 @@ class SettingView: UIView {
             $0.leading.trailing.centerY.equalToSuperview()
         }
 
+        submitBtn.snp.makeConstraints {
+            $0.width.equalTo(80)
+            $0.centerX.equalTo(self.snp.centerX)
+            $0.top.equalTo(self.stackView.snp.bottom).offset(50)
+        }
+    }
+}
+
+extension SettingView {
+//    @objc
+//    func submitBtnPressed(_ sender: UIButton) {
+//        print("buttonPressed")
+//        self.buttonPressed?(self.countInput.text)
+//    }
+    
+//     Delegate Pattern
+    @objc
+    func submitBtnPressed(_ sender: UIButton) {
+        guard let count = self.countInput.text else {
+            print("buttonPressed (else)")
+            self.delegate?.buttonPressed(defaultBalls: "0")
+            return
+        }
+        print("1. submitbtnPressed function works well")
+        self.delegate?.buttonPressed(defaultBalls: count)
     }
 }

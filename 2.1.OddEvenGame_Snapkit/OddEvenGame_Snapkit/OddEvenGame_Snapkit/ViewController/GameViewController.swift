@@ -9,20 +9,31 @@ import UIKit
 import SnapKit
 import Then
 
+// String을 확장해서 NSAttributedString을 반환할 수 있도록 메서드 생성
+extension String {
+    func toAttibutedString() -> NSAttributedString {
+        return NSAttributedString(string: self)
+    }
+}
+
 class GameViewController: UIViewController {
     
     var gameView = GameView()
     var fistView = FistView()
     var settingView = SettingView()
+//    var defaultBall = self.game?.defaultBall
     //메모리 관리(leak 방지,  강한순환참조 방지) 목적으로 옵셔널 사용
     var gameViewModel: GameViewModel? = GameViewModel(defaultBalls: 20)
     var settingViewModel: SettingViewModel? = SettingViewModel()
     
     // 게임시작 버튼
     var gameStartBtn = UIButton(type: .system).then {
-        let btnText: NSAttributedString = startBtnText(text: StartBtnText.gameStart.toString())
+        let font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        let attributes = [NSAttributedString.Key.font: font]
+        let attributedString = NSAttributedString(string: StartBtnText.gameStart.rawValue, attributes: attributes)
+        
         // NSAttributedString을 통해, Label Text를 원하는대로 만들기
-        $0.setAttributedTitle(btnText, for: .normal)
+        $0.setAttributedTitle(attributedString, for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .systemYellow
         // 게임시작 버튼 눌렀을때 Action
@@ -62,6 +73,9 @@ class GameViewController: UIViewController {
         
         guard let gameViewModel = gameViewModel else { return }
         gameViewModel.soundPlay(fileName: "intro")
+        
+        guard let settingViewModel = settingViewModel else { return }
+        settingViewModel.delegate = self
     }
 }
 
@@ -108,29 +122,28 @@ extension GameViewController {
 
 // MARK: - 세팅화면 관련
 extension GameViewController: SetDelegate {
-    
-    @objc
-    func settingBtnPressed(_ sender: UIButton) {
-        let settingView = SetViewController()
-        settingView.settingDelegate = self
-        settingView.modalPresentationStyle = .currentContext
-        self.present(settingView, animated: true, completion: nil)
-    }
-    
-    func setting (ballCount: Int) {
-        guard let gameModel = self.gameViewModel else { return }
+    func setting(ballCount: Int) {
+        print("3. settingComplete")
+        guard let gameModel = gameViewModel else { return }
         gameModel.userBallsCount = ballCount
         gameModel.comBallsCount = ballCount
         gameModel.settingBallCount = ballCount
         
         updateScreenByResult(result: ballCountUpdateAfterSetting(ballCount: ballCount))
     }
+    
+    @objc
+    func settingBtnPressed(_ sender: UIButton) {
+        let settingView = SetViewController()
+        settingView.modalPresentationStyle = .currentContext
+        self.present(settingView, animated: true, completion: nil)
+    }
 }
 
 // MARK: - 화면이 바뀌는 메서드
 extension GameViewController {
     // 게임버튼의 텍스트 바꾸기
-    static func startBtnText(text: String) -> NSAttributedString {
+    func startBtnText(text: String) -> NSAttributedString {
         let btnString = text
         let font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         let attributes = [NSAttributedString.Key.font: font]
@@ -143,13 +156,12 @@ extension GameViewController {
     func updateScreenByResult(result: GameResult) {
         gameView.updateResultText(gameResult: result)
         if result.gameStatus == .gameOver {
-            let btnText: NSAttributedString = GameViewController.startBtnText(text: StartBtnText.refresh.toString())
+            let btnText: NSAttributedString = startBtnText(text: StartBtnText.refresh.toString())
             self.gameStartBtn.setAttributedTitle(btnText,
                                                  for: .normal)
             // 세팅버튼 보이게 하기
             self.settingBtn.isHidden = false
         }
-        
     }
     
     // 세팅 후, 구슬 수 Label Text 바꾸기
@@ -164,7 +176,7 @@ extension GameViewController {
     // 게임 종료 후, Refresh 버튼을 누르면 Label 초기화 하기
     func initLabels() {
         // REFRESH -> GAMESTART
-        let btnText: NSAttributedString = GameViewController.startBtnText(text: StartBtnText.gameStart.toString())
+        let btnText: NSAttributedString = startBtnText(text: StartBtnText.gameStart.toString())
         self.gameStartBtn.setAttributedTitle(btnText,
                                              for: .normal)
         

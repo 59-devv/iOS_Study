@@ -8,5 +8,14 @@
 import UIKit
 
 struct SettingModel {
-    var ballCountText: String
+    var balls: Int
+    
+    var countBalls: Int {
+        get {
+            return self.balls
+        }
+        set {
+            self.balls = newValue
+        }
+    }
 }
