@@ -92,22 +92,25 @@ class SettingView: UIView {
     }
 }
 
+var buttonPressed: ((_ defaultBalls: String?) -> ())?
+
 extension SettingView {
-//    @objc
-//    func submitBtnPressed(_ sender: UIButton) {
-//        print("buttonPressed")
-//        self.buttonPressed?(self.countInput.text)
-//    }
-    
-//     Delegate Pattern
     @objc
     func submitBtnPressed(_ sender: UIButton) {
-        guard let count = self.countInput.text else {
-            print("buttonPressed (else)")
-            self.delegate?.buttonPressed(defaultBalls: "0")
-            return
-        }
-        self.delegate?.buttonPressed(defaultBalls: count)
+        self.buttonPressed?(self.countInput.text)
+        self.delegate?.buttonPressed(defaultBalls: countInput.text)
         print("1. submitbtnPressed function works well")
     }
+    
+//     Delegate Pattern
+//    @objc
+//    func submitBtnPressed(_ sender: UIButton) {
+//        guard let count = self.countInput.text else {
+//            print("buttonPressed (else)")
+//            self.delegate?.buttonPressed(defaultBalls: "0")
+//            return
+//        }
+//        self.delegate?.buttonPressed(defaultBalls: count)
+//        print("1. submitbtnPressed function works well")
+//    }
 }
